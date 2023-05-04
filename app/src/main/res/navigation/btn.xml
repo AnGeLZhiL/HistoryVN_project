@@ -20,4 +20,9 @@
         android:name="com.example.historyvn_project.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/collectionsFragment"
+        android:name="com.example.historyvn_project.CollectionsFragment"
+        android:label="fragment_collections"
+        tools:layout="@layout/fragment_collections" />
 </navigation>

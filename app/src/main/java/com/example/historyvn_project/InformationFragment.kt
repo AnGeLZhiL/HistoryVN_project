@@ -1,59 +1,79 @@
 package com.example.historyvn_project
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
+import com.example.historyvn_project.adapter.CityAdapter
+import com.example.historyvn_project.common.Global
+import com.example.historyvn_project.databinding.FragmentInformationBinding
+import com.example.historyvn_project.model.CityModel
+import okhttp3.*
+import okio.IOException
+import org.json.JSONArray
+import org.json.JSONObject
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class InformationFragment : Fragment(), CityAdapter.Listner {
 
-/**
- * A simple [Fragment] subclass.
- * Use the [InformationFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class InformationFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var binding: FragmentInformationBinding
+    private val cityAdapter = CityAdapter(this)
+    private var client = OkHttpClient()
+    private lateinit var alertDialog: AlertDialog.Builder
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_information, container, false)
+        binding = FragmentInformationBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment InformationFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            InformationFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        alertDialog = AlertDialog.Builder(requireActivity())
+
+        val request = Request.Builder()
+            .url("${Global.base_url}/cities")
+            .build()
+
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                Handler(Looper.getMainLooper()).post {
+                    alertDialog
+                        .setTitle("Ошибка подключения")
+                        .setMessage("Проверьте подключение к интернету или попробуйте повторить ошибку позже")
+                        .setCancelable(true)
+                        .setPositiveButton("Ok") { dialog, it ->
+                            dialog.cancel()
+                        }.show()
                 }
             }
+
+            override fun onResponse(call: Call, response: Response) {
+                if (response.code == 200){
+                    val json = JSONArray(response.body.string())
+                    for (i in 0 until json.length()){
+                        Global.cities.add(CityModel(
+                            id = json.getJSONObject(i).getInt("id_city"),
+                            name = json.getJSONObject(i).getString("name"),
+                            image = json.getJSONObject(i).getJSONObject("images").getString("image_url")
+                        ))
+                    }
+                    Handler(Looper.getMainLooper()).post{
+                        binding.citiesRecyclerView.adapter = cityAdapter
+                    }
+                }
+            }
+
+        })
+    }
+
+    override fun onClickCity(cityModel: CityModel) {
+        TODO("Not yet implemented")
     }
 }
