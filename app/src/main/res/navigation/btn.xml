@@ -37,5 +37,19 @@
         android:id="@+id/categoriesFragment"
         android:name="com.example.historyvn_project.CategoriesFragment"
         android:label="fragment_categories"
-        tools:layout="@layout/fragment_categories" />
+        tools:layout="@layout/fragment_categories" >
+        <action
+            android:id="@+id/action_categoriesFragment_to_objectsFragment"
+            app:destination="@id/objectsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/objectsFragment"
+        android:name="com.example.historyvn_project.ObjectsFragment"
+        android:label="fragment_objects"
+        tools:layout="@layout/fragment_objects" />
+    <fragment
+        android:id="@+id/objectInformationFragment"
+        android:name="com.example.historyvn_project.ObjectInformationFragment"
+        android:label="fragment_object_information"
+        tools:layout="@layout/fragment_object_information" />
 </navigation>

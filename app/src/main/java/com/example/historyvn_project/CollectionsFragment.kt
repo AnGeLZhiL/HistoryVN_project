@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
+import androidx.navigation.fragment.findNavController
 import com.example.historyvn_project.adapter.CityAdapter
 import com.example.historyvn_project.adapter.CollectionAdapter
 import com.example.historyvn_project.common.Global
@@ -79,6 +80,7 @@ class CollectionsFragment : Fragment(), CollectionAdapter.Listner{
     }
 
     override fun onClickCollection(collectionModel: CollectionModel) {
-        TODO("Not yet implemented")
+        findNavController().navigate(R.id.action_collectionsFragment_to_categoriesFragment)
+        Global.selectCollection = collectionModel.id
     }
 }

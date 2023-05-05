@@ -8,31 +8,29 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
-import androidx.navigation.fragment.findNavController
 import com.example.historyvn_project.adapter.CategoryAdapter
-import com.example.historyvn_project.adapter.CollectionAdapter
+import com.example.historyvn_project.adapter.ObjectsAdapter
 import com.example.historyvn_project.common.Global
-import com.example.historyvn_project.databinding.FragmentCategoriesBinding
-import com.example.historyvn_project.databinding.FragmentCollectionsBinding
+import com.example.historyvn_project.databinding.FragmentObjectsBinding
 import com.example.historyvn_project.model.CategoryModel
-import com.example.historyvn_project.model.CollectionModel
+import com.example.historyvn_project.model.ObjectModel
 import okhttp3.*
 import okio.IOException
 import org.json.JSONArray
 
-class CategoriesFragment : Fragment(), CategoryAdapter.Listner {
+class ObjectsFragment : Fragment(), ObjectsAdapter.Listner {
 
-    private lateinit var binding: FragmentCategoriesBinding
-    private lateinit var categoryAdapter: CategoryAdapter
+    private lateinit var binding: FragmentObjectsBinding
+    private lateinit var objectsAdapter: ObjectsAdapter
     private var client = OkHttpClient()
     private lateinit var alertDialog: AlertDialog.Builder
-    private lateinit var categoryList: ArrayList<CategoryModel>
+    private lateinit var objectsList: ArrayList<ObjectModel>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentCategoriesBinding.inflate(inflater, container, false)
+        binding = FragmentObjectsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -42,7 +40,7 @@ class CategoriesFragment : Fragment(), CategoryAdapter.Listner {
         alertDialog = AlertDialog.Builder(requireActivity())
 
         val request = Request.Builder()
-            .url("${Global.base_url}/categories/${Global.selectCollection}")
+            .url("${Global.base_url}/objects/${Global.selectCaterogy}")
             .build()
 
         client.newCall(request).enqueue(object : Callback {
@@ -61,19 +59,22 @@ class CategoriesFragment : Fragment(), CategoryAdapter.Listner {
             override fun onResponse(call: Call, response: Response) {
                 if (response.code == 200){
                     val json = JSONArray(response.body.string())
-                    categoryList = ArrayList()
+                    objectsList = ArrayList()
                     for (i in 0 until json.length()){
-                        categoryList.add(
-                            CategoryModel(
-                            id = json.getJSONObject(i).getInt("id_category"),
-                            name = json.getJSONObject(i).getString("name"),
-                            image = json.getJSONObject(i).getJSONObject("images").getString("image_url")
-                        )
-                        )
+                        objectsList.add(
+                            ObjectModel(
+                                id = json.getJSONObject(i).getInt("id_object"),
+                                name = json.getJSONObject(i).getString("name"),
+                                year = json.getJSONObject(i).getInt("year"),
+                                location = json.getJSONObject(i).getString("location"),
+                                description = json.getJSONObject(i).getString("description"),
+                                map_marker = json.getJSONObject(i).getString("map_marker"),
+                                image = json.getJSONObject(i).getJSONArray("images").getJSONObject(0).getString("image_url")
+                            ))
                     }
                     Handler(Looper.getMainLooper()).post{
-                        categoryAdapter = CategoryAdapter(categoryList, this@CategoriesFragment)
-                        binding.collectionsRecyclerView.adapter = categoryAdapter
+                        objectsAdapter = ObjectsAdapter(objectsList, this@ObjectsFragment)
+                        binding.collectionsRecyclerView.adapter = objectsAdapter
                     }
                 }
             }
@@ -81,8 +82,7 @@ class CategoriesFragment : Fragment(), CategoryAdapter.Listner {
         })
     }
 
-    override fun onClickCategory(categoryModel: CategoryModel) {
-        findNavController().navigate(R.id.action_categoriesFragment_to_objectsFragment)
-        Global.selectCaterogy = categoryModel.id
+    override fun onClickObject(objectModel: ObjectModel) {
+        TODO("Not yet implemented")
     }
 }
