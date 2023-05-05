@@ -1,5 +1,6 @@
 package com.example.historyvn_project.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +11,7 @@ import com.example.historyvn_project.databinding.BoxBinding
 import com.example.historyvn_project.model.CityModel
 import com.squareup.picasso.Picasso
 
-class CityAdapter (val listner: Listner) : RecyclerView.Adapter<CityAdapter.CityViewHolder>(){
+class CityAdapter (val cityList: ArrayList<CityModel>, val listner: Listner) : RecyclerView.Adapter<CityAdapter.CityViewHolder>(){
 
     class CityViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val binding = BoxBinding.bind(itemView)
@@ -30,13 +31,14 @@ class CityAdapter (val listner: Listner) : RecyclerView.Adapter<CityAdapter.City
     }
 
     override fun onBindViewHolder(holder: CityViewHolder, position: Int) {
-        holder.bind(Global.cities[position], listner)
+        holder.bind(cityList[position], listner)
     }
 
-    override fun getItemCount() = Global.cities.size
+    override fun getItemCount() : Int {
+        return cityList.size
+    }
 
     interface Listner {
         fun onClickCity (cityModel: CityModel)
     }
-
 }

@@ -1,59 +1,84 @@
 package com.example.historyvn_project
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
+import com.example.historyvn_project.adapter.CityAdapter
+import com.example.historyvn_project.adapter.CollectionAdapter
+import com.example.historyvn_project.common.Global
+import com.example.historyvn_project.databinding.FragmentCollectionsBinding
+import com.example.historyvn_project.databinding.FragmentInformationBinding
+import com.example.historyvn_project.model.CityModel
+import com.example.historyvn_project.model.CollectionModel
+import okhttp3.*
+import okio.IOException
+import org.json.JSONArray
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class CollectionsFragment : Fragment(), CollectionAdapter.Listner{
 
-/**
- * A simple [Fragment] subclass.
- * Use the [CollectionsFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class CollectionsFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var binding: FragmentCollectionsBinding
+    private lateinit var collectionAdapter: CollectionAdapter
+    private var client = OkHttpClient()
+    private lateinit var alertDialog: AlertDialog.Builder
+    private lateinit var collectionList: ArrayList<CollectionModel>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_collections, container, false)
+        binding = FragmentCollectionsBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment CollectionsFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            CollectionsFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        alertDialog = AlertDialog.Builder(requireActivity())
+
+        val request = Request.Builder()
+            .url("${Global.base_url}/collections/${Global.selectGity}")
+            .build()
+
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                Handler(Looper.getMainLooper()).post {
+                    alertDialog
+                        .setTitle("Ошибка подключения")
+                        .setMessage("Проверьте подключение к интернету или попробуйте повторить ошибку позже")
+                        .setCancelable(true)
+                        .setPositiveButton("Ok") { dialog, it ->
+                            dialog.cancel()
+                        }.show()
                 }
             }
+
+            override fun onResponse(call: Call, response: Response) {
+                if (response.code == 200){
+                    val json = JSONArray(response.body.string())
+                    collectionList = ArrayList()
+                    for (i in 0 until json.length()){
+                        collectionList.add(CollectionModel(
+                            id = json.getJSONObject(i).getInt("id_collection"),
+                            name = json.getJSONObject(i).getString("name"),
+                            image = json.getJSONObject(i).getJSONObject("images").getString("image_url")
+                        ))
+                    }
+                    Handler(Looper.getMainLooper()).post{
+                        collectionAdapter = CollectionAdapter(collectionList, this@CollectionsFragment)
+                        binding.collectionsRecyclerView.adapter = collectionAdapter
+                    }
+                }
+            }
+
+        })
+    }
+
+    override fun onClickCollection(collectionModel: CollectionModel) {
+        TODO("Not yet implemented")
     }
 }

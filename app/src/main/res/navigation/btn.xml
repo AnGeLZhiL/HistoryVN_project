@@ -9,7 +9,11 @@
         android:id="@+id/informationFragment"
         android:name="com.example.historyvn_project.InformationFragment"
         android:label="fragment_information"
-        tools:layout="@layout/fragment_information" />
+        tools:layout="@layout/fragment_information" >
+        <action
+            android:id="@+id/action_informationFragment_to_collectionsFragment"
+            app:destination="@id/collectionsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/testsFragment"
         android:name="com.example.historyvn_project.TestsFragment"
@@ -24,5 +28,14 @@
         android:id="@+id/collectionsFragment"
         android:name="com.example.historyvn_project.CollectionsFragment"
         android:label="fragment_collections"
-        tools:layout="@layout/fragment_collections" />
+        tools:layout="@layout/fragment_collections" >
+        <action
+            android:id="@+id/action_collectionsFragment_to_categoriesFragment"
+            app:destination="@id/categoriesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoriesFragment"
+        android:name="com.example.historyvn_project.CategoriesFragment"
+        android:label="fragment_categories"
+        tools:layout="@layout/fragment_categories" />
 </navigation>

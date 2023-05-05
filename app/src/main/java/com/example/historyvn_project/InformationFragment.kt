@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
+import androidx.navigation.fragment.findNavController
 import com.example.historyvn_project.adapter.CityAdapter
 import com.example.historyvn_project.common.Global
 import com.example.historyvn_project.databinding.FragmentInformationBinding
@@ -20,9 +21,10 @@ import org.json.JSONObject
 class InformationFragment : Fragment(), CityAdapter.Listner {
 
     private lateinit var binding: FragmentInformationBinding
-    private val cityAdapter = CityAdapter(this)
+    private lateinit var cityAdapter: CityAdapter
     private var client = OkHttpClient()
     private lateinit var alertDialog: AlertDialog.Builder
+    private lateinit var cityList: ArrayList<CityModel>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -57,14 +59,16 @@ class InformationFragment : Fragment(), CityAdapter.Listner {
             override fun onResponse(call: Call, response: Response) {
                 if (response.code == 200){
                     val json = JSONArray(response.body.string())
+                    cityList = ArrayList()
                     for (i in 0 until json.length()){
-                        Global.cities.add(CityModel(
+                        cityList.add(CityModel(
                             id = json.getJSONObject(i).getInt("id_city"),
                             name = json.getJSONObject(i).getString("name"),
                             image = json.getJSONObject(i).getJSONObject("images").getString("image_url")
                         ))
                     }
                     Handler(Looper.getMainLooper()).post{
+                        cityAdapter = CityAdapter(cityList, this@InformationFragment)
                         binding.citiesRecyclerView.adapter = cityAdapter
                     }
                 }
@@ -74,6 +78,8 @@ class InformationFragment : Fragment(), CityAdapter.Listner {
     }
 
     override fun onClickCity(cityModel: CityModel) {
-        TODO("Not yet implemented")
+        findNavController().navigate(R.id.action_informationFragment_to_collectionsFragment)
+        Global.selectGity = cityModel.id
+        println("----------------------------${Global.selectGity}")
     }
 }
