@@ -46,7 +46,11 @@
         android:id="@+id/objectsFragment"
         android:name="com.example.historyvn_project.ObjectsFragment"
         android:label="fragment_objects"
-        tools:layout="@layout/fragment_objects" />
+        tools:layout="@layout/fragment_objects" >
+        <action
+            android:id="@+id/action_objectsFragment_to_objectInformationFragment"
+            app:destination="@id/objectInformationFragment" />
+    </fragment>
     <fragment
         android:id="@+id/objectInformationFragment"
         android:name="com.example.historyvn_project.ObjectInformationFragment"

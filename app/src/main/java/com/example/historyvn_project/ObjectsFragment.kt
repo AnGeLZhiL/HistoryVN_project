@@ -8,11 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
-import com.example.historyvn_project.adapter.CategoryAdapter
+import androidx.navigation.fragment.findNavController
 import com.example.historyvn_project.adapter.ObjectsAdapter
 import com.example.historyvn_project.common.Global
 import com.example.historyvn_project.databinding.FragmentObjectsBinding
-import com.example.historyvn_project.model.CategoryModel
 import com.example.historyvn_project.model.ObjectModel
 import okhttp3.*
 import okio.IOException
@@ -83,6 +82,7 @@ class ObjectsFragment : Fragment(), ObjectsAdapter.Listner {
     }
 
     override fun onClickObject(objectModel: ObjectModel) {
-        TODO("Not yet implemented")
+        findNavController().navigate(R.id.action_objectsFragment_to_objectInformationFragment)
+        Global.selectObject = objectModel.id
     }
 }

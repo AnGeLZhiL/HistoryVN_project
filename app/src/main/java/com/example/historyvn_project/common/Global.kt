@@ -11,5 +11,6 @@ class Global {
         var selectGity = 0
         var selectCollection = 0
         var selectCaterogy = 0
+        var selectObject = 0
     }
 }
