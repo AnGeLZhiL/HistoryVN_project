@@ -33,6 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
                 app:cardCornerRadius="5dp"
+                android:layout_margin="10dp"
                 app:cardElevation="6dp">
 
                 <com.denzcoskun.imageslider.ImageSlider
@@ -89,20 +90,39 @@
                     android:text=""/>
             </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/clickShowDesc"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginVertical="5dp"
-                android:textColor="@color/black"
-                android:text="Описание:"/>
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginVertical="5dp"
+                    android:textColor="@color/black"
+                    android:text="Описание"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textAlignment="textEnd"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginVertical="5dp"
+                    android:textColor="@color/black"
+                    android:text=">"/>
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/descriptionTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
+                android:visibility="gone"
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginVertical="5dp"
                 android:textColor="@color/black"
@@ -127,6 +147,24 @@
                 android:textColor="@color/purple_200"
                 android:textStyle="italic"
                 android:text="Посмотреть на карте"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="5dp"
+                android:textColor="@color/black"
+                android:text="Тесты:"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/collectionsRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                tools:listitem="@layout/test_object_item"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
         </LinearLayout>
     </ScrollView>

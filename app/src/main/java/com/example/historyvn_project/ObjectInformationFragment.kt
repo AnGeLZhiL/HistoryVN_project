@@ -9,9 +9,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.navigation.fragment.findNavController
+import com.denzcoskun.imageslider.models.SlideModel
 import com.example.historyvn_project.common.Global
 import com.example.historyvn_project.databinding.FragmentObjectInformationBinding
 import com.example.historyvn_project.databinding.FragmentObjectsBinding
+import com.example.historyvn_project.model.ObjectModel
 import com.yandex.mapkit.Animation
 import com.yandex.mapkit.MapKitFactory
 import com.yandex.mapkit.geometry.Point
@@ -26,6 +28,7 @@ class ObjectInformationFragment : Fragment() {
     private lateinit var binding: FragmentObjectInformationBinding
     private var client = OkHttpClient()
     private lateinit var alertDialog: AlertDialog.Builder
+    private val imageList = ArrayList<SlideModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -60,20 +63,43 @@ class ObjectInformationFragment : Fragment() {
             override fun onResponse(call: Call, response: Response) {
                 if (response.code == 200){
                     val json = JSONObject(response.body.string())
+                    val jsonImageList = json.getJSONArray("images")
+
+                    for (i in 0 until jsonImageList.length()){
+//                        println("----------------${jsonImageList.getJSONObject(i).getString("image_url")}")
+                        imageList.add(
+                            SlideModel(imageUrl = jsonImageList.getJSONObject(i).getString("image_url"))
+                        )
+                    }
+
                     Handler(Looper.getMainLooper()).post {
                         binding.nameTextView.text = json.getString("name")
                         binding.yearTextView.text = json.getInt("year").toString()
                         binding.descriptionTextView.text = json.getString("description")
                         binding.locationTextView.text = json.getString("location")
                         Global.mapMarker = json.getString("map_marker")
+                        binding.imageSlider.setImageList(imageList)
                     }
                 }
             }
 
         })
 
+        binding.clickShowDesc.setOnClickListener {
+            if (binding.descriptionTextView.visibility == View.VISIBLE){
+                binding.descriptionTextView.visibility = View.GONE
+            } else {
+                binding.descriptionTextView.visibility = View.VISIBLE
+            }
+        }
+
         binding.maps.setOnClickListener {
             findNavController().navigate(R.id.action_objectInformationFragment_to_mapFragment)
         }
+
+//        imageList.add(SlideModel("https://img1.goodfon.ru/wallpaper/nbig/a/69/kartinka-3d-dikaya-koshka.jpg", "test1"))
+//        imageList.add(SlideModel("https://img4.goodfon.ru/wallpaper/nbig/1/7c/kartinka-loshadi-liubov-serdechki.jpg"))
+
+
     }
 }
