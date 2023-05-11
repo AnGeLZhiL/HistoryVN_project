@@ -55,5 +55,14 @@
         android:id="@+id/objectInformationFragment"
         android:name="com.example.historyvn_project.ObjectInformationFragment"
         android:label="fragment_object_information"
-        tools:layout="@layout/fragment_object_information" />
+        tools:layout="@layout/fragment_object_information" >
+        <action
+            android:id="@+id/action_objectInformationFragment_to_mapFragment"
+            app:destination="@id/mapFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="com.example.historyvn_project.MapFragment"
+        android:label="fragment_map"
+        tools:layout="@layout/fragment_map" />
 </navigation>
