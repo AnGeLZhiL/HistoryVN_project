@@ -10,10 +10,13 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.navigation.fragment.findNavController
 import com.denzcoskun.imageslider.models.SlideModel
+import com.example.historyvn_project.adapter.ObjectsAdapter
+import com.example.historyvn_project.adapter.TestObjectAdapter
 import com.example.historyvn_project.common.Global
 import com.example.historyvn_project.databinding.FragmentObjectInformationBinding
 import com.example.historyvn_project.databinding.FragmentObjectsBinding
 import com.example.historyvn_project.model.ObjectModel
+import com.example.historyvn_project.model.TestObjectModel
 import com.yandex.mapkit.Animation
 import com.yandex.mapkit.MapKitFactory
 import com.yandex.mapkit.geometry.Point
@@ -23,12 +26,14 @@ import okhttp3.*
 import okio.IOException
 import org.json.JSONObject
 
-class ObjectInformationFragment : Fragment() {
+class ObjectInformationFragment : Fragment(), TestObjectAdapter.Listner {
 
     private lateinit var binding: FragmentObjectInformationBinding
     private var client = OkHttpClient()
     private lateinit var alertDialog: AlertDialog.Builder
     private val imageList = ArrayList<SlideModel>()
+    private lateinit var testObjectsList: ArrayList<TestObjectModel>
+    private lateinit var testObjectsAdapter: TestObjectAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -64,6 +69,17 @@ class ObjectInformationFragment : Fragment() {
                 if (response.code == 200){
                     val json = JSONObject(response.body.string())
                     val jsonImageList = json.getJSONArray("images")
+                    val jsonTestList = json.getJSONArray("tests")
+                    testObjectsList = ArrayList()
+
+                    for (i in 0 until jsonTestList.length()){
+                        testObjectsList.add(
+                            TestObjectModel(
+                                id = jsonTestList.getJSONObject(i).getInt("id_test"),
+                                name = jsonTestList.getJSONObject(i).getString("name")
+                            )
+                        )
+                    }
 
                     for (i in 0 until jsonImageList.length()){
 //                        println("----------------${jsonImageList.getJSONObject(i).getString("image_url")}")
@@ -79,6 +95,8 @@ class ObjectInformationFragment : Fragment() {
                         binding.locationTextView.text = json.getString("location")
                         Global.mapMarker = json.getString("map_marker")
                         binding.imageSlider.setImageList(imageList)
+                        testObjectsAdapter = TestObjectAdapter(testObjectsList, this@ObjectInformationFragment)
+                        binding.collectionsRecyclerView.adapter = testObjectsAdapter
                     }
                 }
             }
@@ -101,5 +119,10 @@ class ObjectInformationFragment : Fragment() {
 //        imageList.add(SlideModel("https://img4.goodfon.ru/wallpaper/nbig/1/7c/kartinka-loshadi-liubov-serdechki.jpg"))
 
 
+    }
+
+    override fun onClickTestObject(testObjectModel: TestObjectModel) {
+        findNavController().navigate(R.id.action_objectInformationFragment_to_testFragment)
+        Global.selectTestObject = testObjectModel.id
     }
 }

@@ -4,40 +4,99 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignInActivity">
+    tools:context=".SignInActivity"
+    android:background="@color/beige">
+
+    <LinearLayout
+        android:id="@+id/logo_history"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center"
+        android:layout_marginVertical="20dp"
+        android:layout_marginHorizontal="10dp">
+
+        <ImageView
+            android:layout_width="77dp"
+            android:layout_height="77dp"
+            android:src="@drawable/logo"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:layout_marginLeft="30dp"
+            android:layout_gravity="center"
+            android:textColor="@color/dark_brown"
+            android:fontFamily="@font/ruslan_display"
+            android:text="HISTORY VN" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
         android:orientation="vertical"
-        android:gravity="center">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo_history">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/vollkorn_bold"
+            android:gravity="center"
+            android:text="Авторизация"
+            android:textColor="@color/dark_brown"
+            android:textSize="30sp" />
+
         <EditText
             android:id="@+id/loginEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"
             android:layout_margin="10dp"
-            android:hint="логин"/>
+            android:hint="почта"
+            android:padding="10dp"
+            android:textSize="22sp"
+            android:fontFamily="@font/vollkorn_semibold"
+            android:textColor="@color/dark_brown"
+            android:background="@drawable/input"
+            android:inputType="text" />
+
         <EditText
             android:id="@+id/passwordEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
             android:layout_margin="10dp"
-            android:hint="пароль"/>
+            android:hint="пароль"
+            android:padding="10dp"
+            android:textSize="22sp"
+            android:fontFamily="@font/vollkorn_semibold"
+            android:textColor="@color/dark_brown"
+            android:background="@drawable/input"
+            android:inputType="textPassword" />
+
         <Button
             android:id="@+id/signInButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="Войти"/>
+            android:text="Войти"
+            android:fontFamily="@font/vollkorn_semibold"
+            android:textSize="22sp"/>
+
         <TextView
             android:id="@+id/signUpButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:gravity="center"
-            android:text="Зарегестрироваться"/>
+            android:textColor="@color/signatures"
+            android:textSize="18sp"
+            android:fontFamily="@font/vollkorn_semibold"
+            android:text="Зарегестрироваться" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

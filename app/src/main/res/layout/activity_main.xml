@@ -12,6 +12,9 @@
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:background="@drawable/btn"
+        android:padding="8dp"
+        app:itemTextColor="@color/btn_style"
+        app:itemIconTint="@color/btn_style"
         app:menu="@menu/menu"
         app:layout_constraintBottom_toBottomOf="parent" />
 

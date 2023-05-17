@@ -11,8 +11,7 @@
         android:id="@+id/citiesRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/box"
-        app:spanCount="2"
+        tools:listitem="@layout/city_item"
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"/>
 </FrameLayout>

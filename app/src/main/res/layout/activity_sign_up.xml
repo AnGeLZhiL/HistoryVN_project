@@ -4,93 +4,169 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignUpActivity">
+    tools:context=".SignUpActivity"
+    android:background="@color/beige">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center">
-
-        <EditText
-            android:id="@+id/firstNameEditText"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:hint="Имя"
-            android:inputType="text" />
+            android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/lastNameEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:hint="Фамилия"
-            android:inputType="text" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingVertical="10dp">
+                <LinearLayout
+                    android:id="@+id/logo_history"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:gravity="center"
+                    android:layout_margin="10dp">
+                    <ImageView
+                        android:layout_width="77dp"
+                        android:layout_height="77dp"
+                        android:src="@drawable/logo"
+                        android:layout_gravity="center"/>
 
-        <EditText
-            android:id="@+id/middleNameEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:hint="Отчество"
-            android:inputType="text" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="30sp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_gravity="center"
+                        android:textColor="@color/dark_brown"
+                        android:fontFamily="@font/ruslan_display"
+                        android:text="HISTORY VN" />
+                </LinearLayout>
 
-        <EditText
-            android:id="@+id/loginEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:hint="Почта"
-            android:inputType="textEmailAddress" />
+                <TextView
+                    android:id="@+id/textViewReg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="30sp"
+                    android:gravity="center"
+                    android:paddingVertical="10dp"
+                    android:layout_marginBottom="20dp"
+                    android:textColor="@color/dark_brown"
+                    android:fontFamily="@font/vollkorn_bold"
+                    android:text="Регистрация"/>
 
-        <EditText
-            android:id="@+id/passEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:hint="Пароль"
-            android:inputType="textPassword" />
+            <EditText
+                android:id="@+id/firstNameEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:hint="Имя"
+                android:padding="10dp"
+                android:textSize="22sp"
+                android:fontFamily="@font/vollkorn_semibold"
+                android:textColor="@color/dark_brown"
+                android:background="@drawable/input"
+                android:inputType="text" />
 
-        <EditText
-            android:id="@+id/passConfirmEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:hint="Повторите пароль"
-            android:inputType="textPassword" />
+            <EditText
+                android:id="@+id/lastNameEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:hint="Фамилия"
+                android:padding="10dp"
+                android:textSize="22sp"
+                android:fontFamily="@font/vollkorn_semibold"
+                android:textColor="@color/dark_brown"
+                android:background="@drawable/input"
+                android:inputType="text" />
 
-<!--        <com.google.android.material.textfield.TextInputLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:id="@+id/passConfirmEditText"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:hint="FJJd"-->
-<!--            app:errorEnabled="true"-->
-<!--            app:passwordToggleEnabled="true"> &lt;!&ndash; наличие глазика контролируется здесь &ndash;&gt;-->
-<!--            <com.google.android.material.textfield.TextInputEditText-->
-<!--                android:id="@+id/passwordEdit"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:inputType="textPassword"-->
-<!--                />-->
-<!--        </com.google.android.material.textfield.TextInputLayout>-->
+            <EditText
+                android:id="@+id/middleNameEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:hint="Отчество"
+                android:padding="10dp"
+                android:textSize="22sp"
+                android:fontFamily="@font/vollkorn_semibold"
+                android:textColor="@color/dark_brown"
+                android:background="@drawable/input"
+                android:inputType="text"  />
+
+            <EditText
+                android:id="@+id/loginEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:hint="Почта"
+                android:padding="10dp"
+                android:textSize="22sp"
+                android:fontFamily="@font/vollkorn_semibold"
+                android:textColor="@color/dark_brown"
+                android:background="@drawable/input"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:id="@+id/passEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:hint="Пароль"
+                android:padding="10dp"
+                android:textSize="22sp"
+                android:fontFamily="@font/vollkorn_semibold"
+                android:textColor="@color/dark_brown"
+                android:background="@drawable/input"
+                android:inputType="textPassword" />
+
+            <EditText
+                android:id="@+id/passConfirmEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:hint="Повторите пароль"
+                android:padding="10dp"
+                android:textSize="22sp"
+                android:fontFamily="@font/vollkorn_semibold"
+                android:textColor="@color/dark_brown"
+                android:background="@drawable/input"
+                android:inputType="textPassword" />
+
+            <!--        <com.google.android.material.textfield.TextInputLayout-->
+            <!--            android:layout_width="match_parent"-->
+            <!--            android:id="@+id/passConfirmEditText"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:hint="FJJd"-->
+            <!--            app:errorEnabled="true"-->
+            <!--            app:passwordToggleEnabled="true"> &lt;!&ndash; наличие глазика контролируется здесь &ndash;&gt;-->
+            <!--            <com.google.android.material.textfield.TextInputEditText-->
+            <!--                android:id="@+id/passwordEdit"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:inputType="textPassword"-->
+            <!--                />-->
+            <!--        </com.google.android.material.textfield.TextInputLayout>-->
 
 
-        <Button
-            android:id="@+id/signUpButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Зарегистрироваться"/>
+            <Button
+                android:id="@+id/signUpButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:fontFamily="@font/vollkorn_semibold"
+                android:textSize="22sp"
+                android:text="Зарегистрироваться"/>
 
-        <TextView
-            android:id="@+id/signInButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:gravity="center"
-            android:text="Войти"/>
-
-    </LinearLayout>
+            <TextView
+                android:id="@+id/signInButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:textColor="@color/signatures"
+                android:textSize="18sp"
+                android:fontFamily="@font/vollkorn_semibold"
+                android:text="Войти"/>
+            </LinearLayout>
+        </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,17 +8,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.historyvn_project.R
 import com.example.historyvn_project.common.Global
 import com.example.historyvn_project.databinding.BoxBinding
+import com.example.historyvn_project.databinding.CityItemBinding
 import com.example.historyvn_project.model.CityModel
 import com.squareup.picasso.Picasso
 
 class CityAdapter (val cityList: ArrayList<CityModel>, val listner: Listner) : RecyclerView.Adapter<CityAdapter.CityViewHolder>(){
 
     class CityViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val binding = BoxBinding.bind(itemView)
+        val binding = CityItemBinding.bind(itemView)
 
         fun bind(cityModel: CityModel, listner: Listner) = with(binding) {
             categoryName.text = cityModel.name
-            Picasso.get().load(cityModel.image).into(categoryImg)
+//            Picasso.get().load(cityModel.image).into(categoryImg)
 
             itemView.setOnClickListener {
                 listner.onClickCity(cityModel)
@@ -27,7 +28,7 @@ class CityAdapter (val cityList: ArrayList<CityModel>, val listner: Listner) : R
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CityViewHolder {
-        return CityViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.box, parent, false))
+        return CityViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.city_item, parent, false))
     }
 
     override fun onBindViewHolder(holder: CityViewHolder, position: Int) {

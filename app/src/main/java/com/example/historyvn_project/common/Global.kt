@@ -12,7 +12,10 @@ class Global {
         var selectCollection = 0
         var selectCaterogy = 0
         var selectObject = 0
+        var selectTestObject = 0
         var mapMarker = ""
         var buf = 0
+        var countQuestionsObjectTest = 0
+        var countCorrectAnswer = 0
     }
 }
