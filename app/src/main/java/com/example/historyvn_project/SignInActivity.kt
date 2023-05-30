@@ -54,7 +54,7 @@ class SignInActivity : AppCompatActivity() {
                         this@SignInActivity.runOnUiThread(java.lang.Runnable {
                             alertDialog
                                 .setTitle("Ошибка подключения")
-                                .setMessage("Проверьте подключение к интернету или попробуйте повторить ошибку позже")
+                                .setMessage("${e}")
                                 .setCancelable(true)
                                 .setPositiveButton("Ok") { dialog, it ->
                                     dialog.cancel()
@@ -69,12 +69,23 @@ class SignInActivity : AppCompatActivity() {
                             saveToken(token)
                             this@SignInActivity.runOnUiThread(java.lang.Runnable {
                                 startActivity(Intent(this@SignInActivity, MainActivity::class.java))
+                                finish()
                             })
-                        } else {
+                        } else if (response.code == 401) {
                             this@SignInActivity.runOnUiThread(java.lang.Runnable {
                                 alertDialog
                                     .setTitle("Ошибка авторизации")
                                     .setMessage("Логин или пароль введен неверно")
+                                    .setCancelable(true)
+                                    .setPositiveButton("Ok") { dialog, it ->
+                                        dialog.cancel()
+                                    }.show()
+                            })
+                        } else {
+                            this@SignInActivity.runOnUiThread(java.lang.Runnable {
+                                alertDialog
+                                    .setTitle("Ошибка сервкра")
+                                    .setMessage("Повторите попытку позже")
                                     .setCancelable(true)
                                     .setPositiveButton("Ok") { dialog, it ->
                                         dialog.cancel()

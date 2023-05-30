@@ -31,7 +31,7 @@ class ObjectInformationFragment : Fragment(), TestObjectAdapter.Listner {
     private lateinit var binding: FragmentObjectInformationBinding
     private var client = OkHttpClient()
     private lateinit var alertDialog: AlertDialog.Builder
-    private val imageList = ArrayList<SlideModel>()
+    private var imageList = ArrayList<SlideModel>()
     private lateinit var testObjectsList: ArrayList<TestObjectModel>
     private lateinit var testObjectsAdapter: TestObjectAdapter
 
@@ -71,6 +71,7 @@ class ObjectInformationFragment : Fragment(), TestObjectAdapter.Listner {
                     val jsonImageList = json.getJSONArray("images")
                     val jsonTestList = json.getJSONArray("tests")
                     testObjectsList = ArrayList()
+                    imageList = ArrayList()
 
                     for (i in 0 until jsonTestList.length()){
                         testObjectsList.add(

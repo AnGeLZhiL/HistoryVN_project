@@ -1,5 +1,6 @@
 package com.example.historyvn_project
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -18,6 +19,7 @@ class SplashScreen : AppCompatActivity() {
 
         Handler().postDelayed({
             startActivity(Intent(this, SignInActivity::class.java))
+            finish()
         }, 2000)
     }
 }

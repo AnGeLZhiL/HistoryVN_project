@@ -71,40 +71,48 @@ class TestStartFragment : Fragment() {
                             var count = countQuestions + 1
                             binding.questionCount.text = count.toString()
                             binding.buttonTest.setOnClickListener {
-                                    if (binding.radioOne.isChecked){
-                                        if(jsonObject.getJSONArray("answers").getJSONObject(0).getBoolean("correctness")){
-                                            countCorrectAnswer++
-                                            countQuestions++
-                                        }
+                                if (binding.radioOne.isChecked){
+                                    if(jsonObject.getJSONArray("answers").getJSONObject(0).getBoolean("correctness")){
+                                        countCorrectAnswer++
+                                        countQuestions++
+                                    } else {
+                                        countQuestions++
                                     }
+                                } else {
                                     if (binding.radioTwo.isChecked){
                                         if(jsonObject.getJSONArray("answers").getJSONObject(1).getBoolean("correctness")){
                                             countCorrectAnswer++
                                             countQuestions++
-                                        }
-                                    }
-                                    if (binding.radioThree.isChecked){
-                                        if(jsonObject.getJSONArray("answers").getJSONObject(2).getBoolean("correctness")){
-                                            countCorrectAnswer++
+                                        } else {
                                             countQuestions++
                                         }
-                                    }
-                                    println("----------------${countCorrectAnswer}")
-                                    println("----------------${Global.countQuestionsObjectTest}")
-                                    if(countQuestions < Global.countQuestionsObjectTest) {
-                                        binding.radioGroup.clearCheck()
-                                        jsonObject = json.getJSONObject(countQuestions)
-                                        binding.questionText.text = jsonObject.getString("text_question")
-                                        binding.radioOne.text = jsonObject.getJSONArray("answers").getJSONObject(0).getString("text_answer")
-                                        binding.radioTwo.text = jsonObject.getJSONArray("answers").getJSONObject(1).getString("text_answer")
-                                        binding.radioThree.text = jsonObject.getJSONArray("answers").getJSONObject(2).getString("text_answer")
-                                        count = countQuestions + 1
-                                        binding.questionCount.text = count.toString()
                                     } else {
-                                        findNavController().navigate(R.id.action_testStartFragment_to_resultTestObjectFragment)
-                                        Global.countCorrectAnswer = countCorrectAnswer
-                                        println("----------------${countCorrectAnswer}")
+                                        if (binding.radioThree.isChecked){
+                                            if(jsonObject.getJSONArray("answers").getJSONObject(2).getBoolean("correctness")){
+                                                countCorrectAnswer++
+                                                countQuestions++
+                                            } else {
+                                                countQuestions++
+                                            }
+                                        }
                                     }
+                                }
+                                println("----------------${countCorrectAnswer}")
+                                println("----------------${Global.countQuestionsObjectTest}")
+                                if(countQuestions < Global.countQuestionsObjectTest) {
+                                    binding.radioGroup.clearCheck()
+                                    jsonObject = json.getJSONObject(countQuestions)
+                                    binding.questionText.text = jsonObject.getString("text_question")
+                                    binding.radioOne.text = jsonObject.getJSONArray("answers").getJSONObject(0).getString("text_answer")
+                                    binding.radioTwo.text = jsonObject.getJSONArray("answers").getJSONObject(1).getString("text_answer")
+                                    binding.radioThree.text = jsonObject.getJSONArray("answers").getJSONObject(2).getString("text_answer")
+                                    count = countQuestions + 1
+                                    binding.questionCount.text = count.toString()
+                                } else {
+                                    findNavController().navigate(R.id.action_testStartFragment_to_resultTestObjectFragment)
+                                    Global.countCorrectAnswer = countCorrectAnswer
+                                    println("----------------${countCorrectAnswer}")
+                                }
                             }
                         }
                     } else {

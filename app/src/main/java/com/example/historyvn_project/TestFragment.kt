@@ -57,6 +57,7 @@ class TestFragment : Fragment(){
 
             override fun onResponse(call: Call, response: Response) {
                 if (response.code == 200) {
+                    Global.countQuestionsObjectTest = 0
                     val json = JSONArray(response.body.string()).getJSONObject(0)
                     for (i in 0 until json.getJSONArray("questions").length()){
                         Global.countQuestionsObjectTest++
@@ -65,6 +66,7 @@ class TestFragment : Fragment(){
                         binding.testName.text = json.getString("name")
                         binding.countQuestion.text = Global.countQuestionsObjectTest.toString()
                     }
+                    Global.testPro = 0
                 }
             }
 

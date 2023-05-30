@@ -6,7 +6,7 @@ import com.example.historyvn_project.model.CollectionModel
 
 class Global {
     companion object {
-        var base_url = "https://historyvn-api-project-production.up.railway.app/api"
+        var base_url = "http://angeli3q.beget.tech/public/api"
         var pref: SharedPreferences? = null
         var selectGity = 0
         var selectCollection = 0
@@ -17,5 +17,6 @@ class Global {
         var buf = 0
         var countQuestionsObjectTest = 0
         var countCorrectAnswer = 0
+        var testPro = 0
     }
 }

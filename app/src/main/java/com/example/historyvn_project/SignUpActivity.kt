@@ -74,6 +74,7 @@ class SignUpActivity : AppCompatActivity() {
                         if (response.code == 201){
                             this@SignUpActivity.runOnUiThread(java.lang.Runnable {
                                 startActivity(Intent(this@SignUpActivity, MainActivity::class.java))
+                                finish()
                             })
                         }
 //                        this@SignUpActivity.runOnUiThread(java.lang.Runnable {
