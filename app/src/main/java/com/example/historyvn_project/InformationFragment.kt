@@ -63,8 +63,7 @@ class InformationFragment : Fragment(), CityAdapter.Listner {
                     for (i in 0 until json.length()){
                         cityList.add(CityModel(
                             id = json.getJSONObject(i).getInt("id_city"),
-                            name = json.getJSONObject(i).getString("name"),
-                            image = json.getJSONObject(i).getJSONObject("images").getString("image_url")
+                            name = json.getJSONObject(i).getString("name")
                         ))
                     }
                     Handler(Looper.getMainLooper()).post{

@@ -9,28 +9,24 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.navigation.fragment.findNavController
-import com.example.historyvn_project.adapter.CityAdapter
 import com.example.historyvn_project.common.Global
-import com.example.historyvn_project.databinding.FragmentInformationBinding
-import com.example.historyvn_project.databinding.FragmentTestsBinding
-import com.example.historyvn_project.model.CityModel
+import com.example.historyvn_project.databinding.FragmentTestBinding
+import com.example.historyvn_project.databinding.FragmentTestInformationsBinding
 import okhttp3.*
 import org.json.JSONArray
 import java.io.IOException
 
-class TestsFragment : Fragment(), CityAdapter.Listner {
+class TestInformationsFragment : Fragment() {
 
-    private lateinit var binding: FragmentTestsBinding
-    private lateinit var cityAdapter: CityAdapter
+    private lateinit var binding: FragmentTestInformationsBinding
     private var client = OkHttpClient()
     private lateinit var alertDialog: AlertDialog.Builder
-    private lateinit var cityList: ArrayList<CityModel>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentTestsBinding.inflate(inflater, container, false)
+        binding = FragmentTestInformationsBinding.inflate(inflater, container, false)
         return  binding.root
     }
 
@@ -40,7 +36,7 @@ class TestsFragment : Fragment(), CityAdapter.Listner {
         alertDialog = AlertDialog.Builder(requireActivity())
 
         val request = Request.Builder()
-            .url("${Global.base_url}/cities")
+            .url("${Global.base_url}/test/${Global.selectTest}")
             .build()
 
         client.newCall(request).enqueue(object : Callback {
@@ -57,27 +53,24 @@ class TestsFragment : Fragment(), CityAdapter.Listner {
             }
 
             override fun onResponse(call: Call, response: Response) {
-                if (response.code == 200){
-                    val json = JSONArray(response.body.string())
-                    cityList = ArrayList()
-                    for (i in 0 until json.length()){
-                        cityList.add(CityModel(
-                            id = json.getJSONObject(i).getInt("id_city"),
-                            name = json.getJSONObject(i).getString("name")
-                        ))
+                if (response.code == 200) {
+                    Global.countQuestionsTest = 0
+                    val json = JSONArray(response.body.string()).getJSONObject(0)
+                    for (i in 0 until json.getJSONArray("questions").length()){
+                        Global.countQuestionsTest++
                     }
-                    Handler(Looper.getMainLooper()).post{
-                        cityAdapter = CityAdapter(cityList, this@TestsFragment)
-                        binding.citiesRecyclerView.adapter = cityAdapter
+                    Handler(Looper.getMainLooper()).post {
+                        binding.testName.text = json.getString("name")
+                        binding.countQuestion.text = Global.countQuestionsTest.toString()
                     }
+                    Global.testPro2 = 0
                 }
             }
 
         })
-    }
-    override fun onClickCity(cityModel: CityModel) {
-        findNavController().navigate(R.id.action_testsFragment_to_collectionsTestsFragment)
-        Global.selectTestGity = cityModel.id
-        println("----------------------------${Global.selectTestGity}")
+
+        binding.testStart.setOnClickListener {
+//            findNavController().navigate(R.id.action_testFragment_to_testStartFragment)
+        }
     }
 }

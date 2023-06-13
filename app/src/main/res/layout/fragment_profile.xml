@@ -3,12 +3,72 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="3" />
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="10dp">
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/userImg"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:src="@color/purple_200"
+                android:layout_gravity="center"
+                android:scaleType="centerCrop"
+                app:shapeAppearanceOverlay="@style/CornersSize50"/>
+            <TextView
+                android:id="@+id/lastNameTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="26sp"
+                android:textColor="@color/dark_brown"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:fontFamily="@font/vollkorn_bold"
+                android:text="Фамилия"/>
+            <TextView
+                android:id="@+id/lmTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="26sp"
+                android:textColor="@color/dark_brown"
+                android:textStyle="bold"
+                android:fontFamily="@font/vollkorn_bold"
+                android:text="ИО"
+                android:textAlignment="center"
+                android:layout_marginBottom="5dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="22sp"
+                    android:textColor="@color/beige3"
+                    android:text="Почта:"
+                    android:fontFamily="@font/vollkorn_bold"
+                    android:layout_marginBottom="5dp"/>
+                <TextView
+                    android:id="@+id/loginTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="22sp"
+                    android:textColor="@color/beige3"
+                    android:fontFamily="@font/vollkorn_bold"
+                    android:layout_marginBottom="5dp"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
 </FrameLayout>

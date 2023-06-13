@@ -18,7 +18,11 @@
         android:id="@+id/testsFragment"
         android:name="com.example.historyvn_project.TestsFragment"
         android:label="fragment_tests"
-        tools:layout="@layout/fragment_tests" />
+        tools:layout="@layout/fragment_tests" >
+        <action
+            android:id="@+id/action_testsFragment_to_collectionsTestsFragment"
+            app:destination="@id/collectionsTestsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.historyvn_project.ProfileFragment"
@@ -94,4 +98,36 @@
         android:name="com.example.historyvn_project.ResultTestObjectFragment"
         android:label="fragment_result_test_object"
         tools:layout="@layout/fragment_result_test_object" />
+    <fragment
+        android:id="@+id/collectionsTestsFragment"
+        android:name="com.example.historyvn_project.CollectionsTestsFragment"
+        android:label="fragment_collections_tests"
+        tools:layout="@layout/fragment_collections_tests" >
+        <action
+            android:id="@+id/action_collectionsTestsFragment_to_categoriesTestFragment"
+            app:destination="@id/categoriesTestFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoriesTestFragment"
+        android:name="com.example.historyvn_project.CategoriesTestFragment"
+        android:label="fragment_categories_test"
+        tools:layout="@layout/fragment_categories_test" >
+        <action
+            android:id="@+id/action_categoriesTestFragment_to_testsListFragment"
+            app:destination="@id/testsListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/testsListFragment"
+        android:name="com.example.historyvn_project.TestsListFragment"
+        android:label="fragment_tests_list"
+        tools:layout="@layout/fragment_tests_list" >
+        <action
+            android:id="@+id/action_testsListFragment_to_testInformationsFragment"
+            app:destination="@id/testInformationsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/testInformationsFragment"
+        android:name="com.example.historyvn_project.TestInformationsFragment"
+        android:label="fragment_test_informations"
+        tools:layout="@layout/fragment_test_informations" />
 </navigation>

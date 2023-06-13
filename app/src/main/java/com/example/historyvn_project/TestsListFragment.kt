@@ -9,29 +9,32 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.navigation.fragment.findNavController
+import com.denzcoskun.imageslider.models.SlideModel
 import com.example.historyvn_project.adapter.CityAdapter
+import com.example.historyvn_project.adapter.TestObjectAdapter
 import com.example.historyvn_project.common.Global
-import com.example.historyvn_project.databinding.FragmentInformationBinding
-import com.example.historyvn_project.databinding.FragmentTestsBinding
+import com.example.historyvn_project.databinding.FragmentObjectInformationBinding
+import com.example.historyvn_project.databinding.FragmentTestsListBinding
 import com.example.historyvn_project.model.CityModel
+import com.example.historyvn_project.model.TestObjectModel
 import okhttp3.*
 import org.json.JSONArray
 import java.io.IOException
 
-class TestsFragment : Fragment(), CityAdapter.Listner {
+class TestsListFragment : Fragment(), TestObjectAdapter.Listner {
 
-    private lateinit var binding: FragmentTestsBinding
-    private lateinit var cityAdapter: CityAdapter
+    private lateinit var binding: FragmentTestsListBinding
     private var client = OkHttpClient()
     private lateinit var alertDialog: AlertDialog.Builder
-    private lateinit var cityList: ArrayList<CityModel>
+    private lateinit var testsList: ArrayList<TestObjectModel>
+    private lateinit var testsAdapter: TestObjectAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentTestsBinding.inflate(inflater, container, false)
-        return  binding.root
+        binding = FragmentTestsListBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -40,7 +43,7 @@ class TestsFragment : Fragment(), CityAdapter.Listner {
         alertDialog = AlertDialog.Builder(requireActivity())
 
         val request = Request.Builder()
-            .url("${Global.base_url}/cities")
+            .url("${Global.base_url}/testscat/${Global.selectTestCaterogy}")
             .build()
 
         client.newCall(request).enqueue(object : Callback {
@@ -59,25 +62,27 @@ class TestsFragment : Fragment(), CityAdapter.Listner {
             override fun onResponse(call: Call, response: Response) {
                 if (response.code == 200){
                     val json = JSONArray(response.body.string())
-                    cityList = ArrayList()
+                    testsList = ArrayList()
                     for (i in 0 until json.length()){
-                        cityList.add(CityModel(
-                            id = json.getJSONObject(i).getInt("id_city"),
-                            name = json.getJSONObject(i).getString("name")
-                        ))
+                        testsList.add(
+                            TestObjectModel(
+                                id = json.getJSONObject(i).getInt("id_test"),
+                                name = json.getJSONObject(i).getString("name")
+                        )
+                        )
                     }
                     Handler(Looper.getMainLooper()).post{
-                        cityAdapter = CityAdapter(cityList, this@TestsFragment)
-                        binding.citiesRecyclerView.adapter = cityAdapter
+                        testsAdapter = TestObjectAdapter(testsList, this@TestsListFragment)
+                        binding.testsRecyclerView.adapter = testsAdapter
                     }
                 }
             }
 
         })
     }
-    override fun onClickCity(cityModel: CityModel) {
-        findNavController().navigate(R.id.action_testsFragment_to_collectionsTestsFragment)
-        Global.selectTestGity = cityModel.id
-        println("----------------------------${Global.selectTestGity}")
+
+    override fun onClickTestObject(testObjectModel: TestObjectModel) {
+        findNavController().navigate(R.id.action_testsListFragment_to_testInformationsFragment)
+        Global.selectTest = testObjectModel.id
     }
 }

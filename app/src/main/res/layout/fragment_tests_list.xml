@@ -4,13 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".TestsFragment">
+    tools:context=".TestsListFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/citiesRecyclerView"
+        android:id="@+id/testsRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/city_item"
+        android:layout_margin="10dp"
+        tools:listitem="@layout/test_object_item"
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 

@@ -37,8 +37,8 @@ class ResultTestObjectFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.countQuestion.text = Global.countQuestionsObjectTest.toString()
-        binding.countRightQuestion.text = Global.countCorrectAnswer.toString()
-        binding.mark.text = markResult(Global.countQuestionsObjectTest, Global.countCorrectAnswer).toString()
+        binding.countRightQuestion.text = Global.countCorrectObjectAnswer.toString()
+        binding.mark.text = markResult(Global.countQuestionsObjectTest, Global.countCorrectObjectAnswer).toString()
 
         alertDialog = AlertDialog.Builder(requireActivity())
 
@@ -51,7 +51,7 @@ class ResultTestObjectFragment : Fragment() {
                     .put("passed", true)
                     .put(
                         "mark",
-                        markResult(Global.countQuestionsObjectTest, Global.countCorrectAnswer)
+                        markResult(Global.countQuestionsObjectTest, Global.countCorrectObjectAnswer)
                     )
                     .toString()
             )

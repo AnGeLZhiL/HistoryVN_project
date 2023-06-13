@@ -9,29 +9,29 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.navigation.fragment.findNavController
-import com.example.historyvn_project.adapter.CityAdapter
+import com.example.historyvn_project.adapter.CategoryAdapter
 import com.example.historyvn_project.common.Global
-import com.example.historyvn_project.databinding.FragmentInformationBinding
-import com.example.historyvn_project.databinding.FragmentTestsBinding
-import com.example.historyvn_project.model.CityModel
+import com.example.historyvn_project.databinding.FragmentCategoriesBinding
+import com.example.historyvn_project.databinding.FragmentCategoriesTestBinding
+import com.example.historyvn_project.model.CategoryModel
 import okhttp3.*
 import org.json.JSONArray
 import java.io.IOException
 
-class TestsFragment : Fragment(), CityAdapter.Listner {
+class CategoriesTestFragment : Fragment(), CategoryAdapter.Listner {
 
-    private lateinit var binding: FragmentTestsBinding
-    private lateinit var cityAdapter: CityAdapter
+    private lateinit var binding: FragmentCategoriesTestBinding
+    private lateinit var categoryAdapter: CategoryAdapter
     private var client = OkHttpClient()
     private lateinit var alertDialog: AlertDialog.Builder
-    private lateinit var cityList: ArrayList<CityModel>
+    private lateinit var categoryList: ArrayList<CategoryModel>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentTestsBinding.inflate(inflater, container, false)
-        return  binding.root
+        binding = FragmentCategoriesTestBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -40,7 +40,7 @@ class TestsFragment : Fragment(), CityAdapter.Listner {
         alertDialog = AlertDialog.Builder(requireActivity())
 
         val request = Request.Builder()
-            .url("${Global.base_url}/cities")
+            .url("${Global.base_url}/categories/${Global.selectTestCollection}")
             .build()
 
         client.newCall(request).enqueue(object : Callback {
@@ -59,25 +59,28 @@ class TestsFragment : Fragment(), CityAdapter.Listner {
             override fun onResponse(call: Call, response: Response) {
                 if (response.code == 200){
                     val json = JSONArray(response.body.string())
-                    cityList = ArrayList()
+                    categoryList = ArrayList()
                     for (i in 0 until json.length()){
-                        cityList.add(CityModel(
-                            id = json.getJSONObject(i).getInt("id_city"),
-                            name = json.getJSONObject(i).getString("name")
-                        ))
+                        categoryList.add(
+                            CategoryModel(
+                                id = json.getJSONObject(i).getInt("id_category"),
+                                name = json.getJSONObject(i).getString("name"),
+                                image = json.getJSONObject(i).getJSONObject("images").getString("image_url")
+                            )
+                        )
                     }
                     Handler(Looper.getMainLooper()).post{
-                        cityAdapter = CityAdapter(cityList, this@TestsFragment)
-                        binding.citiesRecyclerView.adapter = cityAdapter
+                        categoryAdapter = CategoryAdapter(categoryList, this@CategoriesTestFragment)
+                        binding.collectionsRecyclerView.adapter = categoryAdapter
                     }
                 }
             }
 
         })
     }
-    override fun onClickCity(cityModel: CityModel) {
-        findNavController().navigate(R.id.action_testsFragment_to_collectionsTestsFragment)
-        Global.selectTestGity = cityModel.id
-        println("----------------------------${Global.selectTestGity}")
+
+    override fun onClickCategory(categoryModel: CategoryModel) {
+        findNavController().navigate(R.id.action_categoriesTestFragment_to_testsListFragment)
+        Global.selectTestCaterogy = categoryModel.id
     }
 }

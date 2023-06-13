@@ -110,7 +110,7 @@ class TestStartFragment : Fragment() {
                                     binding.questionCount.text = count.toString()
                                 } else {
                                     findNavController().navigate(R.id.action_testStartFragment_to_resultTestObjectFragment)
-                                    Global.countCorrectAnswer = countCorrectAnswer
+                                    Global.countCorrectObjectAnswer = countCorrectAnswer
                                     println("----------------${countCorrectAnswer}")
                                 }
                             }
