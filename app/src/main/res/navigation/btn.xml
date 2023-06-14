@@ -129,5 +129,26 @@
         android:id="@+id/testInformationsFragment"
         android:name="com.example.historyvn_project.TestInformationsFragment"
         android:label="fragment_test_informations"
-        tools:layout="@layout/fragment_test_informations" />
+        tools:layout="@layout/fragment_test_informations" >
+        <action
+            android:id="@+id/action_testInformationsFragment_to_startTestFragment"
+            app:destination="@id/startTestFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/startTestFragment"
+        android:name="com.example.historyvn_project.StartTestFragment"
+        android:label="fragment_start_test"
+        tools:layout="@layout/fragment_start_test" >
+        <action
+            android:id="@+id/action_startTestFragment_to_testsListFragment"
+            app:destination="@id/testsListFragment" />
+        <action
+            android:id="@+id/action_startTestFragment_to_resultTestFragment"
+            app:destination="@id/resultTestFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultTestFragment"
+        android:name="com.example.historyvn_project.ResultTestFragment"
+        android:label="fragment_result_test"
+        tools:layout="@layout/fragment_result_test" />
 </navigation>

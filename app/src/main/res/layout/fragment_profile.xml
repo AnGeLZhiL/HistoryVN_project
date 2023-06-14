@@ -68,6 +68,38 @@
                     android:layout_marginBottom="5dp"/>
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="5dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="22sp"
+                    android:textColor="@color/beige3"
+                    android:text="Рейтинг:"
+                    android:fontFamily="@font/vollkorn_bold"/>
+                <TextView
+                    android:id="@+id/reitingTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="22sp"
+                    android:textColor="@color/beige3"
+                    android:fontFamily="@font/vollkorn_bold"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/star"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:text="Пройденные тесты:"
+                android:textColor="@color/beige3"
+                android:fontFamily="@font/vollkorn_bold"/>
 
         </LinearLayout>
     </ScrollView>

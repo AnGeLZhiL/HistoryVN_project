@@ -70,7 +70,7 @@ class TestInformationsFragment : Fragment() {
         })
 
         binding.testStart.setOnClickListener {
-//            findNavController().navigate(R.id.action_testFragment_to_testStartFragment)
+            findNavController().navigate(R.id.action_testInformationsFragment_to_startTestFragment)
         }
     }
 }
