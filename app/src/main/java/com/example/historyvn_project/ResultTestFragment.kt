@@ -1,5 +1,6 @@
 package com.example.historyvn_project
 
+import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -33,6 +34,10 @@ class ResultTestFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val sharedPreferences = this.requireActivity()
+            .getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+        val token = sharedPreferences.getString("token", null)
+
         binding.countQuestion.text = Global.countQuestionsTest.toString()
         binding.countRightQuestion.text = Global.countCorrectAnswer.toString()
         binding.mark.text = markResult(Global.countQuestionsTest, Global.countCorrectAnswer).toString()
@@ -56,7 +61,7 @@ class ResultTestFragment : Fragment() {
             val request = Request.Builder()
                 .addHeader(
                     "Authorization",
-                    "Bearer ${Global.pref?.getString("token", "del").toString()}"
+                    "Bearer ${token}"
                 )
                 .url("${Global.base_url}/user-test")
                 .post(requestBody)

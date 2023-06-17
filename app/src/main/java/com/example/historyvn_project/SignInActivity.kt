@@ -26,8 +26,6 @@ class SignInActivity : AppCompatActivity() {
         binding = ActivitySignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        Global.pref = getSharedPreferences("TABLE", Context.MODE_PRIVATE)
-
         alertDialog = AlertDialog.Builder(this)
 
         binding.signUpButton.setOnClickListener {
@@ -102,10 +100,18 @@ class SignInActivity : AppCompatActivity() {
         }
     }
 
+//    fun saveToken(token: String){
+//        val editor = Global.pref?.edit()
+//        editor?.putString("token", token)
+//        editor?.apply()
+//    }
+
     fun saveToken(token: String){
-        val editor = Global.pref?.edit()
-        editor?.putString("token", token)
-        editor?.apply()
+        val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.apply{
+            putString("token", token)
+        }.apply()
     }
 
 }

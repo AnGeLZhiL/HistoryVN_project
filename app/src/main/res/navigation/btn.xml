@@ -27,7 +27,11 @@
         android:id="@+id/profileFragment"
         android:name="com.example.historyvn_project.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_updateUserFragment"
+            app:destination="@id/updateUserFragment" />
+    </fragment>
     <fragment
         android:id="@+id/collectionsFragment"
         android:name="com.example.historyvn_project.CollectionsFragment"
@@ -151,4 +155,9 @@
         android:name="com.example.historyvn_project.ResultTestFragment"
         android:label="fragment_result_test"
         tools:layout="@layout/fragment_result_test" />
+    <fragment
+        android:id="@+id/updateUserFragment"
+        android:name="com.example.historyvn_project.UpdateUserFragment"
+        android:label="fragment_update_user"
+        tools:layout="@layout/fragment_update_user" />
 </navigation>

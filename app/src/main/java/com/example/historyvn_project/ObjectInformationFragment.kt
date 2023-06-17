@@ -85,7 +85,7 @@ class ObjectInformationFragment : Fragment(), TestObjectAdapter.Listner {
                     for (i in 0 until jsonImageList.length()){
 //                        println("----------------${jsonImageList.getJSONObject(i).getString("image_url")}")
                         imageList.add(
-                            SlideModel(imageUrl = jsonImageList.getJSONObject(i).getString("image_url"))
+                            SlideModel(imageUrl = Global.url_image+jsonImageList.getJSONObject(i).getString("image_url"))
                         )
                     }
 

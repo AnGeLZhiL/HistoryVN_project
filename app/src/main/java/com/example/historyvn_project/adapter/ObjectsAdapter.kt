@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.historyvn_project.R
+import com.example.historyvn_project.common.Global
 import com.example.historyvn_project.databinding.ObjectItemBinding
 import com.example.historyvn_project.model.ObjectModel
 import com.squareup.picasso.Picasso
@@ -22,7 +23,7 @@ class ObjectsAdapter(val objectsList: ArrayList<ObjectModel>, val listner: Objec
         fun bind(objectModel: ObjectModel, listner: Listner) = with(binding) {
             nameTextView.text = objectModel.name
             yearTextView.text = objectModel.year.toString()
-            Picasso.get().load(objectModel.image).into(categoryImg)
+            Picasso.get().load(Global.url_image+objectModel.image).into(categoryImg)
 
             itemView.setOnClickListener {
                 listner.onClickObject(objectModel)

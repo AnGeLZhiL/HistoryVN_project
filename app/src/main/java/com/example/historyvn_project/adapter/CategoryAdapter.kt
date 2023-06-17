@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.historyvn_project.R
+import com.example.historyvn_project.common.Global
 import com.example.historyvn_project.databinding.CollectionCategoriesBinding
 import com.example.historyvn_project.model.CategoryModel
 import com.squareup.picasso.Picasso
@@ -17,7 +18,7 @@ class CategoryAdapter(val categoryList: ArrayList<CategoryModel>, val listner: C
 
         fun bind(categoryModel: CategoryModel, listner: CategoryAdapter.Listner) = with(binding) {
             categoryName.text = categoryModel.name
-            Picasso.get().load(categoryModel.image).into(categoryImg)
+            Picasso.get().load(Global.url_image+categoryModel.image).into(categoryImg)
 
             itemView.setOnClickListener {
                 listner.onClickCategory(categoryModel)

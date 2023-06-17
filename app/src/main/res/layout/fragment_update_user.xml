@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".UpdateUserFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginHorizontal="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/userImg"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:src="@color/purple_200"
+                android:layout_gravity="center"
+                android:scaleType="centerCrop"
+                app:shapeAppearanceOverlay="@style/CornersSize50"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="5dp" >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="24sp"
+                    android:textColor="@color/beige3"
+                    android:text="Фамилия:"
+                    android:fontFamily="@font/vollkorn_bold"/>
+
+                <EditText
+                    android:id="@+id/lastNameEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Фамилия"
+                    android:padding="10dp"
+                    android:textSize="22sp"
+                    android:fontFamily="@font/vollkorn_semibold"
+                    android:textColor="@color/dark_brown"
+                    android:background="@drawable/input"
+                    android:inputType="text"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="5dp" >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="24sp"
+                    android:textColor="@color/beige3"
+                    android:text="Имя:"
+                    android:fontFamily="@font/vollkorn_bold"/>
+
+                <EditText
+                    android:id="@+id/firstNameEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Имя"
+                    android:padding="10dp"
+                    android:textSize="22sp"
+                    android:fontFamily="@font/vollkorn_semibold"
+                    android:textColor="@color/dark_brown"
+                    android:background="@drawable/input"
+                    android:inputType="text"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="5dp" >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="24sp"
+                    android:textColor="@color/beige3"
+                    android:text="Отчество:"
+                    android:fontFamily="@font/vollkorn_bold"/>
+
+                <EditText
+                    android:id="@+id/middleNameEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Отчество"
+                    android:padding="10dp"
+                    android:textSize="22sp"
+                    android:fontFamily="@font/vollkorn_semibold"
+                    android:textColor="@color/dark_brown"
+                    android:background="@drawable/input"
+                    android:inputType="text"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="10dp" >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="24sp"
+                    android:textColor="@color/beige3"
+                    android:text="Почта:"
+                    android:fontFamily="@font/vollkorn_bold"/>
+
+                <EditText
+                    android:id="@+id/loginEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Почта"
+                    android:padding="10dp"
+                    android:textSize="22sp"
+                    android:fontFamily="@font/vollkorn_semibold"
+                    android:textColor="@color/dark_brown"
+                    android:background="@drawable/input"
+                    android:inputType="text"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/updatePassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:layout_gravity=""
+                android:textColor="@color/signatures"
+                android:text="Изменить пароль"
+                android:fontFamily="@font/vollkorn_bold"/>
+
+            <LinearLayout
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="10dp" >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="24sp"
+                        android:textColor="@color/beige3"
+                        android:text="Пароль:"
+                        android:fontFamily="@font/vollkorn_bold"/>
+
+                    <EditText
+                        android:id="@+id/passwordEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Пароль"
+                        android:padding="10dp"
+                        android:textSize="22sp"
+                        android:fontFamily="@font/vollkorn_semibold"
+                        android:textColor="@color/dark_brown"
+                        android:background="@drawable/input"
+                        android:inputType="textPassword"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="45dp" >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="24sp"
+                        android:textColor="@color/beige3"
+                        android:text="Повторите пароль:"
+                        android:fontFamily="@font/vollkorn_bold"/>
+
+                    <EditText
+                        android:id="@+id/passwordConfNameEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Повторите пароль"
+                        android:padding="10dp"
+                        android:textSize="22sp"
+                        android:fontFamily="@font/vollkorn_semibold"
+                        android:textColor="@color/dark_brown"
+                        android:background="@drawable/input"
+                        android:inputType="textPassword"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button"
+                    android:layout_gravity="bottom">
+                    <TextView
+                        android:id="@+id/updateUser"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="22sp"
+                        android:text="Изменить"
+                        android:textAlignment="center"
+                        android:textColor="@color/dark_brown"
+                        android:fontFamily="@font/vollkorn_bold"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
