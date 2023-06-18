@@ -88,7 +88,11 @@ class ProfileFragment : Fragment() {
                         binding.reitingTextView.text = json.getString("rating").toString()
                         binding.loginTextView.text = json.getString("login").toString()
                         println("----------------${Global.url_image+json.getString("image")}")
-                        Picasso.get().load(Global.url_image+json.getString("image")).into(binding.userImg)
+                        if (Global.selectImage == null && Global.updateImg == 0){
+                            Picasso.get().load(Global.url_image+json.getString("image")).into(binding.userImg)
+                        } else {
+                            binding.userImg.setImageURI(Global.selectImage)
+                        }
                     }
                 }
             }

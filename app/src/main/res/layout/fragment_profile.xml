@@ -21,7 +21,7 @@
                 android:id="@+id/userImg"
                 android:layout_width="180dp"
                 android:layout_height="180dp"
-                android:src="@color/purple_200"
+                android:src="@color/light_gray"
                 android:layout_gravity="center"
                 android:scaleType="centerCrop"
                 app:shapeAppearanceOverlay="@style/CornersSize50"/>
@@ -29,7 +29,7 @@
                 android:id="@+id/lastNameTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="26sp"
+                android:textSize="28sp"
                 android:textColor="@color/dark_brown"
                 android:textStyle="bold"
                 android:textAlignment="center"
@@ -58,12 +58,13 @@
                     android:textColor="@color/beige3"
                     android:text="Почта:"
                     android:fontFamily="@font/vollkorn_bold"
-                    android:layout_marginBottom="5dp"/>
+                    android:layout_marginBottom="10dp"/>
                 <TextView
                     android:id="@+id/loginTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="22sp"
+                    android:layout_marginLeft="8dp"
                     android:textColor="@color/beige3"
                     android:fontFamily="@font/vollkorn_bold"
                     android:layout_marginBottom="5dp"/>
@@ -73,7 +74,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginBottom="5dp">
+                android:layout_marginBottom="10dp">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -87,6 +88,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="22sp"
                     android:textColor="@color/beige3"
+                    android:layout_marginLeft="8dp"
                     android:fontFamily="@font/vollkorn_bold"/>
                 <ImageView
                     android:layout_width="wrap_content"
@@ -94,14 +96,21 @@
                     android:src="@drawable/star"/>
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/testsVisibility"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="22sp"
-                android:text="Пройденные тесты"
-                android:textColor="@color/beige3"
-                android:fontFamily="@font/vollkorn_bold"/>
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/testsVisibility"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="22sp"
+                    android:text="Пройденные тесты"
+                    android:textColor="@color/beige3"
+                    android:fontFamily="@font/vollkorn_bold"/>
+
+            </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/collectionsRecyclerView"

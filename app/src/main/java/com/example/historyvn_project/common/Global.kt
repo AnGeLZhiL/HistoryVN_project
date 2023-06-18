@@ -11,11 +11,13 @@ class Global {
         var base_url = "http://angeli3q.beget.tech/public/api"
         var url_image = "http://angeli3q.beget.tech/storage/app/"
         var role_id = 0
+        var selectImage: Uri? = null
         var selectGity = 0
         var selectTestGity = 0
         var selectCollection = 0
         var selectTestCollection = 0
         var selectCaterogy = 0
+        var updateImg = 0
         var selectTestCaterogy = 0
         var selectObject = 0
         var selectTestObject = 0
