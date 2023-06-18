@@ -13,7 +13,7 @@ import com.example.historyvn_project.model.CityModel
 import com.example.historyvn_project.model.CollectionModel
 import com.squareup.picasso.Picasso
 
-class CollectionAdapter(val collectionList: ArrayList<CollectionModel>, val listner: CollectionAdapter.Listner)
+class CollectionAdapter(var collectionList: ArrayList<CollectionModel>, val listner: CollectionAdapter.Listner)
     : RecyclerView.Adapter<CollectionAdapter.CollectionViewHolder>(){
 
     class CollectionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -27,6 +27,11 @@ class CollectionAdapter(val collectionList: ArrayList<CollectionModel>, val list
                 listner.onClickCollection(collectionModel)
             }
         }
+    }
+
+    fun setFilteredList(collectionList: ArrayList<CollectionModel>){
+        this.collectionList = collectionList
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CollectionViewHolder {

@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.appcompat.app.AlertDialog
 import androidx.navigation.fragment.findNavController
 import com.example.historyvn_project.adapter.CityAdapter
@@ -17,6 +18,8 @@ import com.example.historyvn_project.model.CityModel
 import okhttp3.*
 import org.json.JSONArray
 import java.io.IOException
+import java.util.*
+import kotlin.collections.ArrayList
 
 class TestsFragment : Fragment(), CityAdapter.Listner {
 
@@ -36,6 +39,20 @@ class TestsFragment : Fragment(), CityAdapter.Listner {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.searchView.clearFocus()
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
+            androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                filterList(newText)
+                return true
+            }
+
+        })
 
         alertDialog = AlertDialog.Builder(requireActivity())
 
@@ -75,6 +92,27 @@ class TestsFragment : Fragment(), CityAdapter.Listner {
 
         })
     }
+
+    private fun filterList(newText: String?) {
+        if (newText != null){
+            val filteredList = ArrayList<CityModel>()
+            for (item in cityList){
+                if (item.name.lowercase(Locale.ROOT).contains(newText)){
+                    filteredList.add(item)
+                }
+            }
+
+            if (filteredList.isEmpty()){
+                binding.citiesRecyclerView.visibility = View.GONE
+                binding.textNotFound.visibility = View.VISIBLE
+            } else {
+                cityAdapter.setFilteredList(filteredList)
+                binding.citiesRecyclerView.visibility = View.VISIBLE
+                binding.textNotFound.visibility = View.GONE
+            }
+        }
+    }
+
     override fun onClickCity(cityModel: CityModel) {
         findNavController().navigate(R.id.action_testsFragment_to_collectionsTestsFragment)
         Global.selectTestGity = cityModel.id

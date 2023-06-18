@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.appcompat.app.AlertDialog
 import androidx.navigation.fragment.findNavController
 import com.denzcoskun.imageslider.models.SlideModel
@@ -20,6 +21,8 @@ import com.example.historyvn_project.model.TestObjectModel
 import okhttp3.*
 import org.json.JSONArray
 import java.io.IOException
+import java.util.*
+import kotlin.collections.ArrayList
 
 class TestsListFragment : Fragment(), TestObjectAdapter.Listner {
 
@@ -39,6 +42,20 @@ class TestsListFragment : Fragment(), TestObjectAdapter.Listner {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.searchView.clearFocus()
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
+            androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                filterList(newText)
+                return true
+            }
+
+        })
 
         alertDialog = AlertDialog.Builder(requireActivity())
 
@@ -79,6 +96,26 @@ class TestsListFragment : Fragment(), TestObjectAdapter.Listner {
             }
 
         })
+    }
+
+    private fun filterList(newText: String?) {
+        if (newText != null){
+            val filteredList = ArrayList<TestObjectModel>()
+            for (item in testsList){
+                if (item.name.lowercase(Locale.ROOT).contains(newText)){
+                    filteredList.add(item)
+                }
+            }
+
+            if (filteredList.isEmpty()){
+                binding.testsRecyclerView.visibility = View.GONE
+                binding.textNotFound.visibility = View.VISIBLE
+            } else {
+                testsAdapter.setFilteredList(filteredList)
+                binding.testsRecyclerView.visibility = View.VISIBLE
+                binding.textNotFound.visibility = View.GONE
+            }
+        }
     }
 
     override fun onClickTestObject(testObjectModel: TestObjectModel) {

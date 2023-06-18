@@ -7,10 +7,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.historyvn_project.R
 import com.example.historyvn_project.common.Global
 import com.example.historyvn_project.databinding.ObjectItemBinding
+import com.example.historyvn_project.model.CollectionModel
 import com.example.historyvn_project.model.ObjectModel
 import com.squareup.picasso.Picasso
 
-class ObjectsAdapter(val objectsList: ArrayList<ObjectModel>, val listner: ObjectsAdapter.Listner)
+class ObjectsAdapter(var objectsList: ArrayList<ObjectModel>, val listner: ObjectsAdapter.Listner)
     : RecyclerView.Adapter<ObjectsAdapter.ObjectsViewHolder>() {
 
     interface Listner {
@@ -29,6 +30,11 @@ class ObjectsAdapter(val objectsList: ArrayList<ObjectModel>, val listner: Objec
                 listner.onClickObject(objectModel)
             }
         }
+    }
+
+    fun setFilteredList(objectsList: ArrayList<ObjectModel>){
+        this.objectsList = objectsList
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ObjectsViewHolder {

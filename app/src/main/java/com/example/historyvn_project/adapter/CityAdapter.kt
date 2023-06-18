@@ -10,9 +10,10 @@ import com.example.historyvn_project.common.Global
 import com.example.historyvn_project.databinding.BoxBinding
 import com.example.historyvn_project.databinding.CityItemBinding
 import com.example.historyvn_project.model.CityModel
+import com.example.historyvn_project.model.CollectionModel
 import com.squareup.picasso.Picasso
 
-class CityAdapter (val cityList: ArrayList<CityModel>, val listner: Listner) : RecyclerView.Adapter<CityAdapter.CityViewHolder>(){
+class CityAdapter (var cityList: ArrayList<CityModel>, val listner: Listner) : RecyclerView.Adapter<CityAdapter.CityViewHolder>(){
 
     class CityViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val binding = CityItemBinding.bind(itemView)
@@ -25,6 +26,11 @@ class CityAdapter (val cityList: ArrayList<CityModel>, val listner: Listner) : R
                 listner.onClickCity(cityModel)
             }
         }
+    }
+
+    fun setFilteredList(cityList: ArrayList<CityModel>){
+        this.cityList = cityList
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CityViewHolder {

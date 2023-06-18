@@ -6,9 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.historyvn_project.R
 import com.example.historyvn_project.databinding.TestObjectItemBinding
+import com.example.historyvn_project.model.ObjectModel
 import com.example.historyvn_project.model.TestObjectModel
 
-class TestObjectAdapter(val testObjectList: ArrayList<TestObjectModel>, val listner: TestObjectAdapter.Listner)
+class TestObjectAdapter(var testObjectList: ArrayList<TestObjectModel>, val listner: TestObjectAdapter.Listner)
     : RecyclerView.Adapter<TestObjectAdapter.TestObjectViewHolder>() {
 
     interface Listner {
@@ -25,6 +26,11 @@ class TestObjectAdapter(val testObjectList: ArrayList<TestObjectModel>, val list
                 listner.onClickTestObject(testObjectModel)
             }
         }
+    }
+
+    fun setFilteredList(testObjectList: ArrayList<TestObjectModel>){
+        this.testObjectList = testObjectList
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TestObjectViewHolder {

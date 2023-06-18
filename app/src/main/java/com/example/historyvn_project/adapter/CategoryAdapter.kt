@@ -8,9 +8,10 @@ import com.example.historyvn_project.R
 import com.example.historyvn_project.common.Global
 import com.example.historyvn_project.databinding.CollectionCategoriesBinding
 import com.example.historyvn_project.model.CategoryModel
+import com.example.historyvn_project.model.CollectionModel
 import com.squareup.picasso.Picasso
 
-class CategoryAdapter(val categoryList: ArrayList<CategoryModel>, val listner: CategoryAdapter.Listner)
+class CategoryAdapter(var categoryList: ArrayList<CategoryModel>, val listner: CategoryAdapter.Listner)
     : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
 
     class CategoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -24,6 +25,11 @@ class CategoryAdapter(val categoryList: ArrayList<CategoryModel>, val listner: C
                 listner.onClickCategory(categoryModel)
             }
         }
+    }
+
+    fun setFilteredList(categoryList: ArrayList<CategoryModel>){
+        this.categoryList = categoryList
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
