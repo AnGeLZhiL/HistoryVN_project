@@ -138,10 +138,14 @@ class ProfileFragment : Fragment() {
         })
 
         binding.testsVisibility.setOnClickListener {
-            if (binding.collectionsRecyclerView.visibility == View.VISIBLE)
+            if (binding.collectionsRecyclerView.visibility == View.VISIBLE) {
                 binding.collectionsRecyclerView.visibility = View.GONE
-            else
+                binding.rsvg.setImageResource(R.drawable.down_svg)
+            }
+            else {
                 binding.collectionsRecyclerView.visibility = View.VISIBLE
+                binding.rsvg.setImageResource(R.drawable.top_svg)
+            }
         }
         
         binding.logoutUser.setOnClickListener {

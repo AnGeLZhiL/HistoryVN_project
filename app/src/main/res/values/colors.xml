@@ -9,8 +9,14 @@
     <color name="white">#FFFFFFFF</color>
     <color name="dark_brown">#5C3822</color>
     <color name="beige">#DED0C3</color>
+    <color name="light_beige">#F1E3D5</color>
     <color name="signatures">#885E41</color>
     <color name="dark_beige">#D6B29A</color>
     <color name="beige3">#BA8865</color>
     <color name="light_gray">#A3A0A0</color>
+    <color name="red_mark">#FA9A9A</color>
+    <color name="red">#A85555</color>
+    <color name="orange_mark">#EDA57D</color>
+    <color name="yellow_mark">#EFF687</color>
+    <color name="green_mark">#B1F68B</color>
 </resources>

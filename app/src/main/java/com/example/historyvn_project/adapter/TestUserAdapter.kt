@@ -20,6 +20,18 @@ class TestUserAdapter (val testUserList: ArrayList<TestUserModel>)
         fun bind(testUserModel: TestUserModel) = with(binding) {
             nameTextView.text = testUserModel.name
             markTextView.text = testUserModel.mark.toString();
+            if (testUserModel.mark.toInt() == 3){
+                markColor.setBackgroundResource(R.drawable.orange_mark)
+            }
+            if (testUserModel.mark.toInt() == 5){
+                markColor.setBackgroundResource(R.drawable.green_mark)
+            }
+            if (testUserModel.mark.toInt() == 4){
+                markColor.setBackgroundResource(R.drawable.yellow_mark)
+            }
+            if (testUserModel.mark.toInt() == 2){
+                markColor.setBackgroundResource(R.drawable.red_mark)
+            }
         }
     }
 
