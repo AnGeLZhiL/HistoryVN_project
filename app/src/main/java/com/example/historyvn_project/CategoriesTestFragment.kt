@@ -77,6 +77,10 @@ class CategoriesTestFragment : Fragment(), CategoryAdapter.Listner {
             }
 
         })
+
+        binding.back.setOnClickListener {
+            findNavController().navigate(R.id.action_categoriesTestFragment_to_collectionsTestsFragment)
+        }
     }
 
     override fun onClickCategory(categoryModel: CategoryModel) {

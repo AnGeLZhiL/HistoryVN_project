@@ -9,201 +9,258 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginHorizontal="10dp">
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/light_beige"
+                android:paddingHorizontal="15dp">
+
+                <ImageView
+                    android:id="@+id/back"
+                    android:layout_width="25dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/back_svg"/>
+
+                <TextView
+                    android:id="@+id/textViewReg"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/vollkorn_bold"
+                    android:gravity="center"
+                    android:paddingVertical="10dp"
+                    android:text="Изменение профиля"
+                    android:textColor="@color/dark_brown"
+                    android:textSize="24sp"/>
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="match_parent"/>
+
+            </LinearLayout>
+
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/userImg"
                 android:layout_width="180dp"
                 android:layout_height="180dp"
-                android:src="@color/purple_200"
                 android:layout_gravity="center"
+                android:layout_marginHorizontal="15dp"
                 android:scaleType="centerCrop"
-                app:shapeAppearanceOverlay="@style/CornersSize50"/>
+                android:layout_marginTop="15dp"
+                android:src="@drawable/profile_image_update"
+                app:shapeAppearanceOverlay="@style/CornersSize50" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
                 android:orientation="vertical"
-                android:layout_marginBottom="5dp" >
+                android:layout_marginHorizontal="15dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="24sp"
-                    android:textColor="@color/beige3"
+                    android:fontFamily="@font/vollkorn_bold"
                     android:text="Фамилия:"
-                    android:fontFamily="@font/vollkorn_bold"/>
+                    android:textColor="@color/beige3"
+                    android:textSize="24sp" />
 
                 <EditText
                     android:id="@+id/lastNameEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Фамилия"
-                    android:padding="10dp"
-                    android:textSize="22sp"
-                    android:fontFamily="@font/vollkorn_semibold"
-                    android:textColor="@color/dark_brown"
                     android:background="@drawable/input"
-                    android:inputType="text"/>
+                    android:fontFamily="@font/vollkorn_semibold"
+                    android:hint="Фамилия"
+                    android:inputType="text"
+                    android:padding="10dp"
+                    android:textColor="@color/dark_brown"
+                    android:textSize="22sp" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
                 android:orientation="vertical"
-                android:layout_marginBottom="5dp" >
+                android:layout_marginHorizontal="15dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="24sp"
-                    android:textColor="@color/beige3"
+                    android:fontFamily="@font/vollkorn_bold"
                     android:text="Имя:"
-                    android:fontFamily="@font/vollkorn_bold"/>
+                    android:textColor="@color/beige3"
+                    android:textSize="24sp" />
 
                 <EditText
                     android:id="@+id/firstNameEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Имя"
-                    android:padding="10dp"
-                    android:textSize="22sp"
-                    android:fontFamily="@font/vollkorn_semibold"
-                    android:textColor="@color/dark_brown"
                     android:background="@drawable/input"
-                    android:inputType="text"/>
+                    android:fontFamily="@font/vollkorn_semibold"
+                    android:hint="Имя"
+                    android:inputType="text"
+                    android:padding="10dp"
+                    android:textColor="@color/dark_brown"
+                    android:textSize="22sp" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
                 android:orientation="vertical"
-                android:layout_marginBottom="5dp" >
+                android:layout_marginHorizontal="15dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="24sp"
-                    android:textColor="@color/beige3"
+                    android:fontFamily="@font/vollkorn_bold"
                     android:text="Отчество:"
-                    android:fontFamily="@font/vollkorn_bold"/>
+                    android:textColor="@color/beige3"
+                    android:textSize="24sp" />
 
                 <EditText
                     android:id="@+id/middleNameEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Отчество"
-                    android:padding="10dp"
-                    android:textSize="22sp"
-                    android:fontFamily="@font/vollkorn_semibold"
-                    android:textColor="@color/dark_brown"
                     android:background="@drawable/input"
-                    android:inputType="text"/>
+                    android:fontFamily="@font/vollkorn_semibold"
+                    android:hint="Отчество"
+                    android:inputType="text"
+                    android:padding="10dp"
+                    android:textColor="@color/dark_brown"
+                    android:textSize="22sp" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:orientation="vertical"
-                android:layout_marginBottom="10dp" >
+                android:layout_marginHorizontal="15dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="24sp"
-                    android:textColor="@color/beige3"
+                    android:fontFamily="@font/vollkorn_bold"
                     android:text="Почта:"
-                    android:fontFamily="@font/vollkorn_bold"/>
+                    android:textColor="@color/beige3"
+                    android:textSize="24sp" />
 
                 <EditText
                     android:id="@+id/loginEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Почта"
-                    android:padding="10dp"
-                    android:textSize="22sp"
-                    android:fontFamily="@font/vollkorn_semibold"
-                    android:textColor="@color/dark_brown"
                     android:background="@drawable/input"
-                    android:inputType="text"/>
+                    android:fontFamily="@font/vollkorn_semibold"
+                    android:hint="Почта"
+                    android:inputType="text"
+                    android:padding="10dp"
+                    android:textColor="@color/dark_brown"
+                    android:textSize="22sp" />
 
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/updatePassword"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="24sp"
-                android:layout_gravity=""
-                android:textColor="@color/signatures"
-                android:text="Изменить пароль"
-                android:fontFamily="@font/vollkorn_bold"/>
+                android:orientation="horizontal"
+                android:paddingHorizontal="15dp"
+                android:background="@color/light_beige">
+
+                <TextView
+                    android:id="@+id/updatePassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="24sp"
+                    android:layout_weight="1"
+                    android:text="Изменить пароль"
+                    android:textColor="@color/beige3"
+                    android:fontFamily="@font/vollkorn_bold"/>
+
+                <ImageView
+                    android:id="@+id/rsvg"
+                    android:layout_width="25dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/down_svg"/>
+
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/password"
+                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:visibility="gone">
+                android:visibility="gone"
+                android:layout_marginHorizontal="10dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginBottom="10dp" >
+                    android:layout_marginBottom="10dp"
+                    android:orientation="vertical">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="24sp"
-                        android:textColor="@color/beige3"
+                        android:fontFamily="@font/vollkorn_bold"
                         android:text="Пароль:"
-                        android:fontFamily="@font/vollkorn_bold"/>
+                        android:textColor="@color/beige3"
+                        android:textSize="24sp" />
 
                     <EditText
                         android:id="@+id/passwordEditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Пароль"
-                        android:padding="10dp"
-                        android:textSize="22sp"
-                        android:fontFamily="@font/vollkorn_semibold"
-                        android:textColor="@color/dark_brown"
                         android:background="@drawable/input"
-                        android:inputType="textPassword"/>
+                        android:fontFamily="@font/vollkorn_semibold"
+                        android:hint="Пароль"
+                        android:inputType="textPassword"
+                        android:padding="10dp"
+                        android:textColor="@color/dark_brown"
+                        android:textSize="22sp" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginBottom="45dp" >
+                    android:layout_marginBottom="45dp"
+                    android:orientation="vertical">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="24sp"
-                        android:textColor="@color/beige3"
+                        android:fontFamily="@font/vollkorn_bold"
                         android:text="Повторите пароль:"
-                        android:fontFamily="@font/vollkorn_bold"/>
+                        android:textColor="@color/beige3"
+                        android:textSize="24sp" />
 
                     <EditText
                         android:id="@+id/passwordConfNameEditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Повторите пароль"
-                        android:padding="10dp"
-                        android:textSize="22sp"
-                        android:fontFamily="@font/vollkorn_semibold"
-                        android:textColor="@color/dark_brown"
                         android:background="@drawable/input"
-                        android:inputType="textPassword"/>
+                        android:fontFamily="@font/vollkorn_semibold"
+                        android:hint="Повторите пароль"
+                        android:inputType="textPassword"
+                        android:padding="10dp"
+                        android:textColor="@color/dark_brown"
+                        android:textSize="22sp" />
 
                 </LinearLayout>
 
@@ -212,22 +269,25 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="15dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/button"
-                    android:layout_gravity="bottom">
+                    android:layout_gravity="bottom"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/button">
+
                     <TextView
                         android:id="@+id/updateUser"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="22sp"
+                        android:fontFamily="@font/vollkorn_bold"
                         android:text="Изменить"
                         android:textAlignment="center"
                         android:textColor="@color/dark_brown"
-                        android:fontFamily="@font/vollkorn_bold"/>
+                        android:textSize="22sp" />
                 </LinearLayout>
 
             </LinearLayout>

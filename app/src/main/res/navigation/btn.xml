@@ -40,6 +40,9 @@
         <action
             android:id="@+id/action_collectionsFragment_to_categoriesFragment"
             app:destination="@id/categoriesFragment" />
+        <action
+            android:id="@+id/action_collectionsFragment_to_informationFragment"
+            app:destination="@id/informationFragment" />
     </fragment>
     <fragment
         android:id="@+id/categoriesFragment"
@@ -49,6 +52,9 @@
         <action
             android:id="@+id/action_categoriesFragment_to_objectsFragment"
             app:destination="@id/objectsFragment" />
+        <action
+            android:id="@+id/action_categoriesFragment_to_collectionsFragment"
+            app:destination="@id/collectionsFragment" />
     </fragment>
     <fragment
         android:id="@+id/objectsFragment"
@@ -58,6 +64,9 @@
         <action
             android:id="@+id/action_objectsFragment_to_objectInformationFragment"
             app:destination="@id/objectInformationFragment" />
+        <action
+            android:id="@+id/action_objectsFragment_to_categoriesFragment"
+            app:destination="@id/categoriesFragment" />
     </fragment>
     <fragment
         android:id="@+id/objectInformationFragment"
@@ -70,6 +79,9 @@
         <action
             android:id="@+id/action_objectInformationFragment_to_testFragment"
             app:destination="@id/testFragment" />
+        <action
+            android:id="@+id/action_objectInformationFragment_to_objectsFragment"
+            app:destination="@id/objectsFragment" />
     </fragment>
     <fragment
         android:id="@+id/mapFragment"
@@ -84,6 +96,9 @@
         <action
             android:id="@+id/action_testFragment_to_testStartFragment"
             app:destination="@id/testStartFragment" />
+        <action
+            android:id="@+id/action_testFragment_to_objectInformationFragment"
+            app:destination="@id/objectInformationFragment" />
     </fragment>
     <fragment
         android:id="@+id/testStartFragment"
@@ -96,12 +111,19 @@
         <action
             android:id="@+id/action_testStartFragment_to_objectInformationFragment"
             app:destination="@id/objectInformationFragment" />
+        <action
+            android:id="@+id/action_testStartFragment_to_testFragment"
+            app:destination="@id/testFragment" />
     </fragment>
     <fragment
         android:id="@+id/resultTestObjectFragment"
         android:name="com.example.historyvn_project.ResultTestObjectFragment"
         android:label="fragment_result_test_object"
-        tools:layout="@layout/fragment_result_test_object" />
+        tools:layout="@layout/fragment_result_test_object" >
+        <action
+            android:id="@+id/action_resultTestObjectFragment_to_objectInformationFragment3"
+            app:destination="@id/objectInformationFragment" />
+    </fragment>
     <fragment
         android:id="@+id/collectionsTestsFragment"
         android:name="com.example.historyvn_project.CollectionsTestsFragment"
@@ -110,6 +132,9 @@
         <action
             android:id="@+id/action_collectionsTestsFragment_to_categoriesTestFragment"
             app:destination="@id/categoriesTestFragment" />
+        <action
+            android:id="@+id/action_collectionsTestsFragment_to_testsFragment"
+            app:destination="@id/testsFragment" />
     </fragment>
     <fragment
         android:id="@+id/categoriesTestFragment"
@@ -119,6 +144,9 @@
         <action
             android:id="@+id/action_categoriesTestFragment_to_testsListFragment"
             app:destination="@id/testsListFragment" />
+        <action
+            android:id="@+id/action_categoriesTestFragment_to_collectionsTestsFragment"
+            app:destination="@id/collectionsTestsFragment" />
     </fragment>
     <fragment
         android:id="@+id/testsListFragment"
@@ -128,6 +156,9 @@
         <action
             android:id="@+id/action_testsListFragment_to_testInformationsFragment"
             app:destination="@id/testInformationsFragment" />
+        <action
+            android:id="@+id/action_testsListFragment_to_categoriesTestFragment"
+            app:destination="@id/categoriesTestFragment" />
     </fragment>
     <fragment
         android:id="@+id/testInformationsFragment"
@@ -137,6 +168,9 @@
         <action
             android:id="@+id/action_testInformationsFragment_to_startTestFragment"
             app:destination="@id/startTestFragment" />
+        <action
+            android:id="@+id/action_testInformationsFragment_to_testsListFragment"
+            app:destination="@id/testsListFragment" />
     </fragment>
     <fragment
         android:id="@+id/startTestFragment"
@@ -149,12 +183,19 @@
         <action
             android:id="@+id/action_startTestFragment_to_resultTestFragment"
             app:destination="@id/resultTestFragment" />
+        <action
+            android:id="@+id/action_startTestFragment_to_testInformationsFragment"
+            app:destination="@id/testInformationsFragment" />
     </fragment>
     <fragment
         android:id="@+id/resultTestFragment"
         android:name="com.example.historyvn_project.ResultTestFragment"
         android:label="fragment_result_test"
-        tools:layout="@layout/fragment_result_test" />
+        tools:layout="@layout/fragment_result_test" >
+        <action
+            android:id="@+id/action_resultTestFragment_to_testsListFragment"
+            app:destination="@id/testsListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/updateUserFragment"
         android:name="com.example.historyvn_project.UpdateUserFragment"

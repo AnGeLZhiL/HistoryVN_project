@@ -117,10 +117,28 @@ class UpdateUserFragment : Fragment() {
         })
 
         binding.updatePassword.setOnClickListener {
-            if (binding.password.visibility == View.VISIBLE)
+            if (binding.password.visibility == View.VISIBLE) {
                 binding.password.visibility = View.GONE
-            else
+                binding.rsvg.setImageResource(R.drawable.down_svg)
+            }
+            else{
                 binding.password.visibility = View.VISIBLE
+                binding.rsvg.setImageResource(R.drawable.top_svg)
+            }
+        }
+
+        binding.back.setOnClickListener {
+            alertDialog
+                .setTitle("Подтверждение")
+                .setMessage("Вы уверены, что хотите вернуться назад? Изменения не будут применены")
+                .setCancelable(true)
+                .setPositiveButton("Да") { dialog, it ->
+                    findNavController().navigate(R.id.action_updateUserFragment_to_profileFragment)
+                }
+                .setNegativeButton("Нет") { dialog, it ->
+                    dialog.cancel()
+                }.show()
+
         }
 
         binding.updateUser.setOnClickListener {

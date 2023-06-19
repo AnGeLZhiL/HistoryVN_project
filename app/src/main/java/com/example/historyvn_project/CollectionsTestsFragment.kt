@@ -92,6 +92,10 @@ class CollectionsTestsFragment : Fragment(), CollectionAdapter.Listner{
             }
 
         })
+
+        binding.back.setOnClickListener {
+            findNavController().navigate(R.id.action_collectionsTestsFragment_to_testsFragment)
+        }
     }
 
     private fun filterList(newText: String?) {

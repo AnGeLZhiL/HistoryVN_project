@@ -3,47 +3,60 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:layout_marginHorizontal="10dp"
     android:background="@drawable/object_item_stroke"
     android:layout_marginVertical="5dp">
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/categoryImg"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:src="@color/purple_200"
-        android:layout_marginEnd="20dp"
-        android:scaleType="centerCrop"
-        app:shapeAppearanceOverlay="@style/CornersSize50"/>
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/categoryImg"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@color/light_gray"
+            android:layout_marginEnd="20dp"
+            android:scaleType="centerCrop"
+            app:shapeAppearanceOverlay="@style/CornersSize50"/>
 
-        <TextView
-            android:id="@+id/nameTextView"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="22sp"
-            android:textColor="@color/dark_brown"
-            android:textStyle="bold"
-            android:fontFamily="@font/vollkorn_bold"
-            android:text="Название"
-            android:layout_marginBottom="5dp"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
 
-        <TextView
-            android:id="@+id/yearTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textColor="@color/beige3"
-            android:text="Год"
-            android:fontFamily="@font/vollkorn_bold"
-            android:layout_marginBottom="5dp"/>
+            <TextView
+                android:id="@+id/nameTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:textColor="@color/dark_brown"
+                android:textStyle="bold"
+                android:fontFamily="@font/vollkorn_bold"
+                android:text="Название"
+                android:layout_marginBottom="5dp"/>
 
+            <TextView
+                android:id="@+id/yearTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/beige3"
+                android:text="Год"
+                android:fontFamily="@font/vollkorn_bold"
+                android:layout_marginBottom="5dp"/>
+
+        </LinearLayout>
     </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="1.4dp"
+        android:background="@drawable/test"/>
 
 </LinearLayout>

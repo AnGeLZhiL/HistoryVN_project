@@ -59,8 +59,8 @@
                     android:layout_height="wrap_content"
                     android:textSize="24sp"
                     android:textColor="@color/beige3"
-                    android:text="Почта:"
                     android:fontFamily="@font/vollkorn_bold"
+                    android:text="Почта:"
                     android:layout_marginBottom="10dp"/>
                 <TextView
                     android:id="@+id/loginTextView"

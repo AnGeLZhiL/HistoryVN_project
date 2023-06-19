@@ -75,5 +75,9 @@ class TestFragment : Fragment(){
         binding.testStart.setOnClickListener {
             findNavController().navigate(R.id.action_testFragment_to_testStartFragment)
         }
+
+        binding.back.setOnClickListener {
+            findNavController().navigate(R.id.action_testFragment_to_objectInformationFragment)
+        }
     }
 }

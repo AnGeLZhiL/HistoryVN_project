@@ -122,5 +122,18 @@ class StartTestFragment : Fragment() {
                 }
             }
         })
+
+        binding.back.setOnClickListener {
+            alertDialog
+                .setTitle("Подтверждение")
+                .setMessage("Вы уверены, что хотите покинуть тест? Результат теста не будет засчитан")
+                .setCancelable(true)
+                .setPositiveButton("Да") { dialog, it ->
+                    findNavController().navigate(R.id.action_startTestFragment_to_testInformationsFragment)
+                }
+                .setNegativeButton("Нет") { dialog, it ->
+                    dialog.cancel()
+                }.show()
+        }
     }
 }

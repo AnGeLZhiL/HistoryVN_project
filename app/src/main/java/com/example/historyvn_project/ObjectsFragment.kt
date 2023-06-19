@@ -97,6 +97,10 @@ class ObjectsFragment : Fragment(), ObjectsAdapter.Listner {
             }
 
         })
+
+        binding.back.setOnClickListener {
+            findNavController().navigate(R.id.action_objectsFragment_to_categoriesFragment)
+        }
     }
 
     private fun filterList(newText: String?) {

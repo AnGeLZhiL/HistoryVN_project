@@ -96,6 +96,10 @@ class TestsListFragment : Fragment(), TestObjectAdapter.Listner {
             }
 
         })
+
+        binding.back.setOnClickListener {
+            findNavController().navigate(R.id.action_testsListFragment_to_categoriesTestFragment)
+        }
     }
 
     private fun filterList(newText: String?) {

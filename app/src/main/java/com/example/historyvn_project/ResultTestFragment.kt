@@ -1,6 +1,7 @@
 package com.example.historyvn_project
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -9,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
+import androidx.navigation.fragment.findNavController
 import com.example.historyvn_project.common.Global
 import com.example.historyvn_project.databinding.FragmentResultTestBinding
 import com.example.historyvn_project.databinding.FragmentResultTestObjectBinding
@@ -41,6 +43,15 @@ class ResultTestFragment : Fragment() {
         binding.countQuestion.text = Global.countQuestionsTest.toString()
         binding.countRightQuestion.text = Global.countCorrectAnswer.toString()
         binding.mark.text = markResult(Global.countQuestionsTest, Global.countCorrectAnswer).toString()
+
+        if (markResult(Global.countQuestionsObjectTest, Global.countCorrectObjectAnswer) == 2){
+            binding.mark.setTextColor(Color.parseColor("#FA9A9A"))
+        } else if (markResult(Global.countQuestionsObjectTest, Global.countCorrectObjectAnswer) == 3){
+            binding.mark.setTextColor(Color.parseColor("#EDA57D"))
+        } else if (markResult(Global.countQuestionsObjectTest, Global.countCorrectObjectAnswer) == 4){
+            binding.mark.setTextColor(Color.parseColor("#EFF687"))
+        } else
+            binding.mark.setTextColor(Color.parseColor("#B1F68B"))
 
         alertDialog = AlertDialog.Builder(requireActivity())
 
@@ -99,6 +110,10 @@ class ResultTestFragment : Fragment() {
                 }
 
             })
+        }
+
+        binding.back.setOnClickListener {
+            findNavController().navigate(R.id.action_resultTestFragment_to_testsListFragment)
         }
     }
 

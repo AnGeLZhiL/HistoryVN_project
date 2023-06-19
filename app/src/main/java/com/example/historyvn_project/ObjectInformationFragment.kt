@@ -107,13 +107,19 @@ class ObjectInformationFragment : Fragment(), TestObjectAdapter.Listner {
         binding.clickShowDesc.setOnClickListener {
             if (binding.descriptionTextView.visibility == View.VISIBLE){
                 binding.descriptionTextView.visibility = View.GONE
+                binding.rsvg.setImageResource(R.drawable.down_svg)
             } else {
                 binding.descriptionTextView.visibility = View.VISIBLE
+                binding.rsvg.setImageResource(R.drawable.top_svg)
             }
         }
 
         binding.maps.setOnClickListener {
             findNavController().navigate(R.id.action_objectInformationFragment_to_mapFragment)
+        }
+
+        binding.back.setOnClickListener {
+            findNavController().navigate(R.id.action_objectInformationFragment_to_objectsFragment)
         }
 
 //        imageList.add(SlideModel("https://img1.goodfon.ru/wallpaper/nbig/a/69/kartinka-3d-dikaya-koshka.jpg", "test1"))

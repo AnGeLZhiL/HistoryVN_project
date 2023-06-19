@@ -6,28 +6,49 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ObjectsFragment">
 
-    <TextView
-        android:id="@+id/textViewReg"
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/vollkorn_bold"
-        android:gravity="center"
-        android:paddingVertical="10dp"
-        android:text="Объекты"
-        android:textColor="@color/dark_brown"
-        android:textSize="24sp"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:background="@color/light_beige"
+        android:orientation="horizontal"
+        android:paddingHorizontal="15dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="25dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/back_svg" />
+
+        <TextView
+            android:id="@+id/textViewReg"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/vollkorn_bold"
+            android:gravity="center"
+            android:paddingVertical="10dp"
+            android:text="Объекты"
+            android:textColor="@color/dark_brown"
+            android:textSize="24sp" />
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/textViewReg"
-        app:queryHint="Поиск.."
-        android:textColor="@color/dark_brown"
+        android:layout_margin="20dp"
         android:background="@drawable/search_view"
-        app:iconifiedByDefault="false"/>
+        android:textColor="@color/dark_brown"
+        app:iconifiedByDefault="false"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:queryHint="Поиск.." />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/collectionsRecyclerView"

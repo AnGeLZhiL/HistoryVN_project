@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -16,16 +16,49 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/light_beige"
+                android:orientation="horizontal"
+                android:paddingHorizontal="15dp"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/back"
+                    android:layout_width="25dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/back_svg" />
+
+                <TextView
+                    android:id="@+id/textViewReg"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/vollkorn_bold"
+                    android:textColor="@color/dark_brown"
+                    android:gravity="center"
+                    android:paddingVertical="10dp"
+                    android:text="Объект"
+                    android:textSize="24sp" />
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
             <TextView
                 android:id="@+id/nameTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="15dp"
                 android:textSize="28sp"
-                android:textStyle="bold"
                 android:textIsSelectable="true"
-                android:textColor="@color/black"
                 android:textAlignment="center"
+                android:fontFamily="@font/vollkorn_bold"
+                android:textColor="@color/dark_brown"
                 android:text="Название"/>
 
             
@@ -33,7 +66,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
                 app:cardCornerRadius="5dp"
-                android:layout_margin="10dp"
+                android:layout_marginHorizontal="15dp"
                 app:cardElevation="6dp">
 
                 <com.denzcoskun.imageslider.ImageSlider
@@ -42,6 +75,7 @@
                     android:layout_height="250dp"
                     app:iss_auto_cycle="true"
                     app:iss_delay="0"
+                    android:background="@color/light_gray"
                     app:iss_period="2500"/>
 
             </androidx.cardview.widget.CardView>
@@ -50,21 +84,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginHorizontal="10dp"
+                android:layout_marginHorizontal="15dp"
                 android:layout_marginVertical="5dp">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    android:textColor="@color/beige3"
+                    android:fontFamily="@font/vollkorn_bold"
                     android:text="Год основания:"/>
                 <TextView
                     android:id="@+id/yearTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:textIsSelectable="true"
-                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    android:textColor="@color/beige3"
+                    android:fontFamily="@font/vollkorn_bold"
                     android:text=""/>
             </LinearLayout>
 
@@ -72,21 +107,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginHorizontal="10dp"
+                android:layout_marginHorizontal="15dp"
                 android:layout_marginVertical="5dp">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:textColor="@color/black"
-                    android:text="Местонахождение:"/>
+                    android:textSize="24sp"
+                    android:textColor="@color/beige3"
+                    android:fontFamily="@font/vollkorn_bold"
+                    android:text="Адрес:"/>
                 <TextView
                     android:id="@+id/locationTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
+                    android:textSize="24sp"
+                    android:textColor="@color/beige3"
+                    android:fontFamily="@font/vollkorn_bold"
                     android:textIsSelectable="true"
-                    android:textColor="@color/black"
                     android:text=""/>
             </LinearLayout>
 
@@ -94,26 +131,24 @@
                 android:id="@+id/clickShowDesc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginVertical="5dp"
-                    android:textColor="@color/black"
-                    android:text="Описание"/>
+                android:orientation="horizontal"
+                android:paddingHorizontal="15dp"
+                android:background="@color/light_beige">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:textAlignment="textEnd"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginVertical="5dp"
-                    android:textColor="@color/black"
-                    android:text=">"/>
+                    android:textSize="24sp"
+                    android:layout_weight="1"
+                    android:text="Описание"
+                    android:textColor="@color/beige3"
+                    android:fontFamily="@font/vollkorn_bold"/>
+
+                <ImageView
+                    android:id="@+id/rsvg"
+                    android:layout_width="25dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/down_svg"/>
 
             </LinearLayout>
 
@@ -121,51 +156,57 @@
                 android:id="@+id/descriptionTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
+                android:textSize="24sp"
                 android:visibility="gone"
+                android:fontFamily="@font/vollkorn_bold"
+                android:textColor="@color/dark_brown"
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginVertical="5dp"
-                android:textColor="@color/black"
                 android:textIsSelectable="true"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginVertical="5dp"
-                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:textColor="@color/beige3"
+                android:fontFamily="@font/vollkorn_bold"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="5dp"
                 android:text="Местоположение:"/>
 
             <TextView
                 android:id="@+id/maps"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginVertical="5dp"
-                android:textColor="@color/purple_200"
+                android:textSize="22sp"
+                android:textAlignment="center"
+                android:textColor="@color/red_mark"
+                android:fontFamily="@font/vollkorn_bold"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginBottom="5dp"
                 android:textStyle="italic"
                 android:text="Посмотреть на карте"/>
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:layout_marginHorizontal="10dp"
+                android:textSize="22sp"
+                android:textColor="@color/beige3"
+                android:fontFamily="@font/vollkorn_bold"
+                android:paddingHorizontal="15dp"
                 android:layout_marginVertical="5dp"
-                android:textColor="@color/black"
-                android:text="Тесты:"/>
+                android:text="Тесты:"
+                android:background="@color/light_beige"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/collectionsRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="10dp"
+                android:layout_marginHorizontal="15dp"
                 tools:listitem="@layout/test_object_item"
                 android:orientation="vertical"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
         </LinearLayout>
     </ScrollView>
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

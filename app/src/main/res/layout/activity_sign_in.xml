@@ -56,7 +56,8 @@
             android:id="@+id/loginEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_marginVertical="10dp"
+            android:layout_marginHorizontal="15dp"
             android:hint="почта"
             android:padding="10dp"
             android:textSize="22sp"
@@ -69,7 +70,8 @@
             android:id="@+id/passwordEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_marginVertical="10dp"
+            android:layout_marginHorizontal="15dp"
             android:hint="пароль"
             android:padding="10dp"
             android:textSize="22sp"
@@ -78,25 +80,65 @@
             android:background="@drawable/input"
             android:inputType="textPassword" />
 
-        <Button
-            android:id="@+id/signInButton"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Войти"
-            android:fontFamily="@font/vollkorn_semibold"
-            android:textSize="22sp"/>
+            android:background="@drawable/button"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="15dp">
 
-        <TextView
-            android:id="@+id/signUpButton"
+            <TextView
+                android:id="@+id/signInButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/vollkorn_bold"
+                android:textSize="24sp"
+                android:textAlignment="center"
+                android:text="Войти"
+                android:textColor="@color/dark_brown"/>
+
+
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:gravity="center"
-            android:textColor="@color/signatures"
-            android:textSize="18sp"
-            android:fontFamily="@font/vollkorn_semibold"
-            android:text="Зарегестрироваться" />
+            android:orientation="vertical"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginVertical="10dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/signatures"
+                android:textSize="20sp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/vollkorn_semibold"
+                android:text="Нет аккаунта?"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/signUpButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/signatures"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/vollkorn_semibold"
+                    android:text="Зарегистрироваться"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1.5dp"
+                    android:background="@drawable/stroke_dark"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
