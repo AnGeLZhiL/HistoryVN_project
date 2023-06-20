@@ -85,13 +85,18 @@ class ObjectInformationFragment : Fragment(), TestObjectAdapter.Listner {
                     for (i in 0 until jsonImageList.length()){
 //                        println("----------------${jsonImageList.getJSONObject(i).getString("image_url")}")
                         imageList.add(
-                            SlideModel(imageUrl = Global.url_image+jsonImageList.getJSONObject(i).getString("image_url"))
+//                            SlideModel(imageUrl = Global.url_image+jsonImageList.getJSONObject(i).getString("image_url"))
+                            SlideModel(imageUrl = jsonImageList.getJSONObject(i).getString("image_url"))
                         )
                     }
 
                     Handler(Looper.getMainLooper()).post {
                         binding.nameTextView.text = json.getString("name")
-                        binding.yearTextView.text = json.getInt("year").toString()
+                        if (json.getInt("year") == 1){
+                            binding.yearTextView.visibility = View.GONE
+                        } else {
+                            binding.yearTextView.text = json.getInt("year").toString()
+                        }
                         binding.descriptionTextView.text = json.getString("description")
                         binding.locationTextView.text = json.getString("location")
                         Global.mapMarker = json.getString("map_marker")

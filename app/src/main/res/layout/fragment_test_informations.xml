@@ -55,7 +55,7 @@
             android:textAlignment="center"
             android:textSize="26sp"
             android:fontFamily="@font/vollkorn_bold"
-            android:textColor="@color/dark_brown"/>
+            android:textColor="@color/beige3"/>
 
         <TextView
             android:id="@+id/testName"
@@ -74,7 +74,7 @@
             android:textAlignment="center"
             android:textSize="26sp"
             android:fontFamily="@font/vollkorn_bold"
-            android:textColor="@color/dark_brown"/>
+            android:textColor="@color/beige3"/>
 
         <TextView
             android:id="@+id/countQuestion"

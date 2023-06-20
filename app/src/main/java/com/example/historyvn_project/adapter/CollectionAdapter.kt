@@ -21,7 +21,8 @@ class CollectionAdapter(var collectionList: ArrayList<CollectionModel>, val list
 
         fun bind(collectionModel: CollectionModel, listner: Listner) = with(binding) {
             categoryName.text = collectionModel.name
-            Picasso.get().load(Global.url_image+collectionModel.image).into(categoryImg)
+//            Picasso.get().load(Global.url_image+collectionModel.image).into(categoryImg)
+            Picasso.get().load(collectionModel.image).into(categoryImg)
 
             itemView.setOnClickListener {
                 listner.onClickCollection(collectionModel)

@@ -19,7 +19,8 @@ class CategoryAdapter(var categoryList: ArrayList<CategoryModel>, val listner: C
 
         fun bind(categoryModel: CategoryModel, listner: CategoryAdapter.Listner) = with(binding) {
             categoryName.text = categoryModel.name
-            Picasso.get().load(Global.url_image+categoryModel.image).into(categoryImg)
+//            Picasso.get().load(Global.url_image+categoryModel.image).into(categoryImg)
+            Picasso.get().load(categoryModel.image).into(categoryImg)
 
             itemView.setOnClickListener {
                 listner.onClickCategory(categoryModel)

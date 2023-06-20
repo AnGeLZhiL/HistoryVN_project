@@ -23,8 +23,12 @@ class ObjectsAdapter(var objectsList: ArrayList<ObjectModel>, val listner: Objec
 
         fun bind(objectModel: ObjectModel, listner: Listner) = with(binding) {
             nameTextView.text = objectModel.name
-            yearTextView.text = objectModel.year.toString()
-            Picasso.get().load(Global.url_image+objectModel.image).into(categoryImg)
+            if (objectModel.year == 1){
+                yearTextView.visibility == View.GONE
+            } else {
+                yearTextView.text = objectModel.year.toString()
+            }
+            Picasso.get().load(objectModel.image).into(categoryImg)
 
             itemView.setOnClickListener {
                 listner.onClickObject(objectModel)

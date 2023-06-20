@@ -64,7 +64,7 @@
                     android:layout_marginRight="10dp"
                     android:layout_marginBottom="10dp"
                     android:fontFamily="@font/vollkorn_semibold"
-                    android:textColor="@color/dark_brown"
+                    android:textColor="@color/beige3"
                     android:text="Вопрос:"
                     android:textSize="22sp" />
 
@@ -75,7 +75,7 @@
                     android:layout_marginBottom="10dp"
                     android:text=""
                     android:fontFamily="@font/vollkorn_semibold"
-                    android:textColor="@color/dark_brown"
+                    android:textColor="@color/beige3"
                     android:textSize="22sp" />
             </LinearLayout>
 
@@ -97,7 +97,7 @@
                 android:layout_marginBottom="10dp"
                 android:text="Выберите один ответ на вопрос:"
                 android:fontFamily="@font/vollkorn_semibold"
-                android:textColor="@color/dark_brown"
+                android:textColor="@color/beige3"
                 android:textSize="22sp" />
 
             <RadioGroup
